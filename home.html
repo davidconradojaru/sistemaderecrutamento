@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Recrutamento</title>
+    <link rel="stylesheet" href="static/css/styles.css"> <!-- Incluindo o CSS -->
+</head>
+<body>
+    <header>
+        <h1>Sistema de Recrutamento Novalar</h1>
+    </header>
+
+    <nav>
+        <ul class="tab-list">
+            <li class="tab-item" data-tab="dashboard">Dashboard</li>
+            <li class="tab-item active" data-tab="Candidatos">Candidatos</li>
+            <li class="tab-item" data-tab="Aprovações">Aprovações</li>
+            <li class="tab-item" data-tab="Etapas">Etapas</li>
+            
+        </ul>
+    </nav>
+
+    <section id="dashboard" class="tab-content">
+        <h2>Dashboard</h2>
+        <p>Aqui será exibido um dashboard com os dados do soft ainda a definir.</p>
+    </section>
+
+    <section id="Candidatos" class="tab-content active">
+        <h2 class="titulocand">Lista de Candidatos</h2>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Pesquise Candidatos...">
+            <button id="searchButton">Pesquisar</button>
+        </div>
+
+<!-- Adicionando Filtros -->
+        <div class="filter-container">
+            <label for="city">Cidade:</label>
+            <select id="city">
+                <option value="">Todas</option>
+                <option value="Porto Velho">Porto Velho</option>
+                <option value="Ji-Paraná">Ji-Paraná</option>
+                <option value="Ariquemes">Ariquemes</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+
+            <label for="position">Cargo:</label>
+            <select id="position">
+                <option value="">Todos</option>
+                <option value="Vendedor">Vendedor</option>
+                <option value="Crediarista">Crediarista</option>
+                <option value="Montador">Montador</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+            
+            <button id="filterButton">Aplicar Filtros</button>
+        </div>
+
+        <div id="searchResults">
+        <div id="pagination"></div>
+
+    </section>
+
+    <section id="Aprovações" class="tab-content">
+        <h2>Currículos Aguardando Aprovação</h2>
+        <p>Aqui serão exibidos os currículos aguardando aprovação.</p>
+    </section>
+
+    <section id="Etapas" class="tab-content">
+        <h2>Currículos Aprovados e Suas Etapas</h2>
+        <p>Aqui será exibido o progresso dos currículos aprovados.</p>
+    </section>
+    <script src="static/js/abacandidatos.js"></script> <!-- aba candidatos -->
+    <script src="static/js/home.js"></script> <!-- Incluindo o JavaScript -->
+    
+</body>
+</html>

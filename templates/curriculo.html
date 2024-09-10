@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo de {{ candidato.nome }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            border-color: blue;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        p {
+            margin: 10px 0;
+        }
+        p strong {
+            color: #007BFF;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007BFF;
+            border-radius: 5px;
+            text-align: center;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Currículo de {{ candidato.nome }}</h1>
+        <p><strong>Nome:</strong> {{ candidato.nome }}</p>
+        <p><strong>Cidade Desejada:</strong> {{ candidato.onde_trabalhar }}</p>
+        <p><strong>Data de Nascimento:</strong> {{ candidato.data_nascimento }}</p>
+        <p><strong>CPF:</strong> {{ candidato.cpf }}</p>
+        <p><strong>Telefone:</strong> {{ candidato.telefone }}</p>
+        <p><strong>Email:</strong> {{ candidato.email }}</p>
+        <p><strong>Estado Civil:</strong> {{ candidato.estado_civil }}</p>
+        <p><strong>Gênero:</strong> {{ candidato.genero }}</p>
+        <p><strong>Nacionalidade:</strong> {{ candidato.nacionalidade }}</p>
+        <p><strong>Endereço:</strong> {{ candidato.endereco }}</p>
+        <p><strong>Número:</strong> {{ candidato.numero }}</p>
+        <p><strong>Bairro:</strong> {{ candidato.bairro }}</p>
+        <p><strong>CEP:</strong> {{ candidato.cep }}</p>
+        <p><strong>Cidade:</strong> {{ candidato.cidade }}</p>
+        <p><strong>Nome da Referência:</strong> {{ candidato.nome_referencia }}</p>
+        <p><strong>Telefone da Referência:</strong> {{ candidato.telefone_referencia }}</p>
+        <p><strong>Descrição da Referência:</strong> {{ candidato.descricao_referencia }}</p>
+        <p><strong>Descrição de Locais:</strong> {{ candidato.descricao_locais }}</p>
+        <p><strong>Descrição da Experiência:</strong> {{ candidato.descricao_experiencia }}</p>
+        <p><strong>Formação Acadêmica:</strong> {{ candidato.formacao_academica }}</p>
+        <p><strong>Formação:</strong> {{ candidato.formacao }}</p>
+        <p><strong>Fale Sobre Você:</strong> {{ candidato.falesobrevoce }}</p>
+        <p><strong>Data de Inclusão:</strong> {{ candidato.created_at }}</p>
+
+        <button onclick="voltarParaPaginaAnterior()">Voltar</button>
+
+        <script>
+        function voltarParaPaginaAnterior() {
+            // Voltar para a página anterior mantendo o estado da página home
+            window.history.back();
+        }
+        </script>
+    </div>
+</body>
+</html>

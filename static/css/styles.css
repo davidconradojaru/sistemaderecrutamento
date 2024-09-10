@@ -1,0 +1,183 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #fbff00;
+    color: #000000;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo das abas */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #ddd;
+}
+
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.tab-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.tab-item {
+    padding: 15px 30px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-item:hover {
+    background-color: #e9ecef;
+}
+
+.tab-item.active {
+    border-bottom: 3px solid #007bff;
+    color: #007bff;
+}
+
+/* Estilo do conteúdo das abas */
+.tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* botão de pesquisa na aba candidatos */
+/* Estilo do contêiner de pesquisa */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* centraliza nome lista de candidatos */
+.titulocand {   
+    text-align: center;
+}
+
+
+#searchInput {
+    padding: 10px 15px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #0056b3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
+#searchButton:active {
+    transform: scale(0.98);
+}
+
+#searchResults {
+    margin-top: 20px;
+    
+}
+
+.result-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* FILTRO DA ABA CANDIDATOS*/
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.filter-container label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.filter-container select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.filter-container select:focus {
+    border-color: #007bff;
+}
+
+#filterButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#filterButton:hover {
+    background-color: #0056b3;
+}
+
+#filterButton:active {
+    transform: scale(0.98);
+}
