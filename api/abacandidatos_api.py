@@ -134,5 +134,5 @@ def curriculo(id):
     else:
         return "Currículo não encontrado", 404
 
-if __name__ == '__main__':  # Se o script for executado diretamente
+if __name__ == '__main__': 
     app.run(debug=True)  
