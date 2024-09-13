@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS  
 import psycopg2  
 
-app = Flask(__name__, template_folder='../templates')  # Ajusta o caminho para a pasta de templates
-CORS(app)  # Habilita o CORS para permitir requisições de outras origens
+app = Flask(__name__, template_folder='../templates') 
+CORS(app)  
 
 def get_database_connection():
     # Função para estabelecer uma conexão com o banco de dados PostgreSQL
@@ -22,7 +22,7 @@ def get_database_connection():
 def pesquisar_candidato():
     city = request.args.get('city', '').strip().lower()
     position = request.args.get('position', '').strip().lower()
-    query = request.args.get('query', '').strip().lower()  # Manter a pesquisa geral
+    query = request.args.get('query', '').strip().lower()  
 
     conn = get_database_connection()
     cursor = conn.cursor()
@@ -52,7 +52,7 @@ def pesquisar_candidato():
     except Exception as e:
         cursor.close()
         conn.close()
-        return jsonify({"error": str(e)}), 500  # Retorna um erro 500 em caso de falha
+        return jsonify({"error": str(e)}), 500  
 
     cursor.close()
     conn.close()
