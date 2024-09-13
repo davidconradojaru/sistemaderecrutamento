@@ -72,7 +72,6 @@ function searchCandidates(city, position) {
             return response.json();
         })
         .then(data => {
-            // Atualize a div de resultados com os dados filtrados
             displayResults(data);
         })
         .catch(error => console.error('Erro:', error));
