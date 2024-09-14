@@ -6,14 +6,13 @@ app = Flask(__name__, template_folder='../templates')
 CORS(app)  
 
 def get_database_connection():
-    # Função para estabelecer uma conexão com o banco de dados PostgreSQL
     conn = psycopg2.connect(
         host="localhost",  
         database="recruit",  
         user="postgres",  
         password="1478963" 
     )
-    return conn  # Retorna a conexão com o banco de dados
+    return conn 
 
 
 
@@ -27,7 +26,6 @@ def pesquisar_candidato():
     conn = get_database_connection()
     cursor = conn.cursor()
 
-    # Montar a consulta com base nos filtros fornecidos
     base_query = "SELECT * FROM noval.curriculo WHERE 1=1"
     
     if query:
