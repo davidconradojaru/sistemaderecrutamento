@@ -2,18 +2,17 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS  
 import psycopg2  
 
-app = Flask(__name__, template_folder='../templates')  # Ajusta o caminho para a pasta de templates
-CORS(app)  # Habilita o CORS para permitir requisições de outras origens
+app = Flask(__name__, template_folder='../templates') 
+CORS(app)  
 
 def get_database_connection():
-    # Função para estabelecer uma conexão com o banco de dados PostgreSQL
     conn = psycopg2.connect(
         host="localhost",  
         database="recruit",  
         user="postgres",  
         password="1478963" 
     )
-    return conn  # Retorna a conexão com o banco de dados
+    return conn 
 
 
 
@@ -22,12 +21,12 @@ def get_database_connection():
 def pesquisar_candidato():
     city = request.args.get('city', '').strip().lower()
     position = request.args.get('position', '').strip().lower()
-    query = request.args.get('query', '').strip().lower()  # Manter a pesquisa geral
+    query = request.args.get('query', '').strip().lower()  
+    sort = request.args.get('sort', 'desc')
 
     conn = get_database_connection()
     cursor = conn.cursor()
 
-    # Montar a consulta com base nos filtros fornecidos
     base_query = "SELECT * FROM noval.curriculo WHERE 1=1"
     
     if query:
@@ -36,6 +35,8 @@ def pesquisar_candidato():
         base_query += " AND LOWER(cidade) = %s"
     if position:
         base_query += " AND LOWER(cargo) = %s"
+        
+    base_query += " ORDER BY created_at " + ('DESC' if sort == 'desc' else 'ASC')
 
     # Preparar os parâmetros para a consulta
     params = []
@@ -52,7 +53,7 @@ def pesquisar_candidato():
     except Exception as e:
         cursor.close()
         conn.close()
-        return jsonify({"error": str(e)}), 500  # Retorna um erro 500 em caso de falha
+        return jsonify({"error": str(e)}), 500  
 
     cursor.close()
     conn.close()
@@ -134,5 +135,5 @@ def curriculo(id):
     else:
         return "Currículo não encontrado", 404
 
-if __name__ == '__main__':  # Se o script for executado diretamente
+if __name__ == '__main__': 
     app.run(debug=True)  

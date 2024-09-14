@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function() {
                             <button class="view-cv" data-id="${item.id}">Ver Currículo</button>
                         `;
                         searchResults.appendChild(resultItem);
+
                     });
+
 
                     // Adiciona ouvintes de evento para os botões "Ver Currículo"
                     document.querySelectorAll(".view-cv").forEach(button => {
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-//FUNÇÃO DE FILTROS CIDADE E CARGO
+
 // Função de filtros cidade e cargo
 document.getElementById('filterButton').addEventListener('click', function() {
     const city = document.getElementById('city').value;
@@ -72,7 +74,6 @@ function searchCandidates(city, position) {
             return response.json();
         })
         .then(data => {
-            // Atualize a div de resultados com os dados filtrados
             displayResults(data);
         })
         .catch(error => console.error('Erro:', error));
@@ -149,6 +150,7 @@ function restaurarEstadoPagina() {
         searchInput.value = savedQuery;
     }
 }
+
 
 // Restaurar o estado da página ao carregar
 restaurarEstadoPagina();
