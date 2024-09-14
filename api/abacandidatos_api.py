@@ -22,6 +22,7 @@ def pesquisar_candidato():
     city = request.args.get('city', '').strip().lower()
     position = request.args.get('position', '').strip().lower()
     query = request.args.get('query', '').strip().lower()  
+    sort = request.args.get('sort', 'desc')
 
     conn = get_database_connection()
     cursor = conn.cursor()
@@ -34,6 +35,8 @@ def pesquisar_candidato():
         base_query += " AND LOWER(cidade) = %s"
     if position:
         base_query += " AND LOWER(cargo) = %s"
+        
+    base_query += " ORDER BY created_at " + ('DESC' if sort == 'desc' else 'ASC')
 
     # Preparar os parâmetros para a consulta
     params = []

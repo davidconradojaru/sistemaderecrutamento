@@ -27,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function() {
                             <button class="view-cv" data-id="${item.id}">Ver Currículo</button>
                         `;
                         searchResults.appendChild(resultItem);
+
                     });
+
 
                     // Adiciona ouvintes de evento para os botões "Ver Currículo"
                     document.querySelectorAll(".view-cv").forEach(button => {
@@ -148,6 +150,7 @@ function restaurarEstadoPagina() {
         searchInput.value = savedQuery;
     }
 }
+
 
 // Restaurar o estado da página ao carregar
 restaurarEstadoPagina();
