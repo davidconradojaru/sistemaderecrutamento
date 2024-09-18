@@ -49,11 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
-    
-
-
-
-
 // Função de filtros cidade e cargo
 document.getElementById('filterButton').addEventListener('click', function() {
     const city = document.getElementById('city').value;
