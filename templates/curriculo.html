@@ -45,6 +45,32 @@
         a:hover {
             background-color: #0056b3;
         }
+        .button_class {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        
+        .button_class button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .button_class button:hover {
+            background-color: darkblue;
+        }
+        
+        .left-button {
+            align-self: flex-start;
+        }
+        
+        .right-button {
+            align-self: flex-end;
+        }
     </style>
 </head>
 <body>
@@ -74,14 +100,17 @@
         <p><strong>Fale Sobre Você:</strong> {{ candidato.falesobrevoce }}</p>
         <p><strong>Data de Inclusão:</strong> {{ candidato.created_at }}</p>
 
+        <div class="button_class">
         <button onclick="voltarParaPaginaAnterior()">Voltar</button>
+        <button onclick="entrevista_pendente()">Chamar para entrevista</button>
+        </div>
 
         <script>
-        function voltarParaPaginaAnterior() {
-            // Voltar para a página anterior mantendo o estado da página home
+        function voltarParaPaginaAnterior() { // Voltar para a página anterior mantendo o estado da página home
             window.history.back();
         }
         </script>
+        <script src="static/js/fazerentrevista.js"></script>
     </div>
 </body>
 </html>
