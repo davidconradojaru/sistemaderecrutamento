@@ -21,7 +21,7 @@ function buscarEntrevistas() {
 
 function exibirEntrevistas(data) {
     const resultadosContainer = document.getElementById('resultadosEntrevista');
-    resultadosContainer.innerHTML = ''; // Limpa resultados anteriores
+    resultadosContainer.innerHTML = '';
 
     if (data.length > 0) {
         data.forEach(item => {
