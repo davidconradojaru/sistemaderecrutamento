@@ -125,7 +125,7 @@ nav {
     
 }
 
-.result-item {
+.result-item, .resultado-item {
     background-color: #fff;
     padding: 15px;
     margin-bottom: 10px;

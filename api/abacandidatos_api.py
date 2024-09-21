@@ -86,7 +86,8 @@ def pesquisar_candidato():
             "formacao_academica": row[21],
             "formacao": row[22],
             "falesobrevoce": row[23],
-            "created_at": row[24].strftime('%d/%m/%y %H:%M:%S') if row[24] else None
+            "created_at": row[24].strftime('%d/%m/%y %H:%M:%S') if row[24] else None,
+            "chamar_entrevista": row[25]
         })
 
     return jsonify(candidatos)
