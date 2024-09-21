@@ -107,7 +107,6 @@ function displayResults(data) {
 
 
 function viewCurriculo(id) {
-    // Redireciona para a página do currículo com o ID do candidato
     window.location.href = `http://127.0.0.1:5000/curriculo/${id}`;
 }
 
@@ -154,3 +153,4 @@ searchButton.addEventListener("click", function() {
     fetchResults();
 });
 });
+

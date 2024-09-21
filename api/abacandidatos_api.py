@@ -134,6 +134,52 @@ def curriculo(id):
         return render_template('curriculo.html', candidato=candidato)
     else:
         return "Currículo não encontrado", 404
+    
+    
+    
+    
+#ROTA PARA BOTÃO CHAMAR ENTREVISTA
+@app.route('/curriculo/<int:id>/entrevista', methods=['POST'])
+def alterar_entrevista(id):
+    conn = get_database_connection()
+    cursor = conn.cursor()
+    
+    try:
+        cursor.execute("UPDATE noval.curriculo SET chamar_entrevista = TRUE WHERE id = %s", (id,))
+        conn.commit()
+        
+        if cursor.rowcount == 0:
+            return "Currículo não encontrado", 404
+
+        return jsonify({'status': 'sucesso'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+#ROTA PARA EXIBIR NA ABA ENTREVISTA SE NO BD COLUNA CHAMAR_ENTREVISTA FOR TRUE
+@app.route('/entrevistas', methods=['GET'])
+def listar_entrevistas():
+    conn = get_database_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT * FROM noval.curriculo WHERE chamar_entrevista = TRUE")
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    resultados = []
+    for row in rows:
+        resultados.append({
+            "id": row[0],
+            "onde_trabalhar": row[1],
+            "cargo": row[2],
+            "nome": row[3],
+            "created_at": row[24].strftime('%d/%m/%y %H:%M:%S') if row[24] else None
+        })
+
+    return jsonify(resultados)
 
 if __name__ == '__main__': 
     app.run(debug=True)  
