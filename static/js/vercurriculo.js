@@ -1,3 +1,8 @@
+function voltarParaPaginaAnterior() {
+    window.history.back();
+}
+
+
 function entrevista_pendente(candidatoId) {
     fetch(`http://127.0.0.1:5000/curriculo/${candidatoId}/chama_entrevista`, {
         method: 'POST',
@@ -18,6 +23,7 @@ function entrevista_pendente(candidatoId) {
         alert(error.message);
     });
 }
+
 
 
 
