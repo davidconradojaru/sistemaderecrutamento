@@ -1,3 +1,7 @@
+
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     buscarEntrevistas();
 });
@@ -39,12 +43,3 @@ function exibirEntrevistas(data) {
         resultadosContainer.innerHTML = '<p>Nenhum candidato encontrado.</p>';
     }
 }
-
-
-
-
-function entrevista_pendente(id) {
-    
-}
-
-

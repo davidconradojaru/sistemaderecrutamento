@@ -105,13 +105,11 @@
         <button onclick="voltarParaPaginaAnterior()">Voltar</button>
         <button onclick="entrevista_pendente(candidato.id)">Chamar para Entrevista</button>
         </div>
-
-        <script>
-        function voltarParaPaginaAnterior() { // Voltar para a página anterior mantendo o estado da página home
+        <script>function voltarParaPaginaAnterior() {
             window.history.back();
-        }
-        </script>
-        <script src="static/js/fazerentrevista.js"></script>
+        }</script>
+        <script src="{{ url_for('static', filename='js/vercurriculo.js') }}"></script>
+        
     </div>
 </body>
 </html>

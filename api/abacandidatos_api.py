@@ -7,10 +7,10 @@ CORS(app)
 
 def get_database_connection():
     conn = psycopg2.connect(
-        host="localhost",  
-        database="recruit",  
-        user="postgres",  
-        password="1478963" 
+        host="localhost",
+        database="recruit",
+        user="postgres",
+        password="1478963"
     )
     return conn 
 
@@ -94,7 +94,6 @@ def pesquisar_candidato():
 
 
 
-
 @app.route('/curriculo/<int:id>')
 def curriculo(id):
     conn = get_database_connection()
@@ -138,9 +137,8 @@ def curriculo(id):
     
     
     
-    
 #ROTA PARA BOTÃO CHAMAR ENTREVISTA
-@app.route('/curriculo/<int:id>/entrevista', methods=['POST'])
+@app.route('/curriculo/<int:id>/chama_entrevista', methods=['POST'])
 def alterar_entrevista(id):
     conn = get_database_connection()
     cursor = conn.cursor()

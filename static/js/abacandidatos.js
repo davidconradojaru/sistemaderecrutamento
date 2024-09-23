@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             <p><strong>Cidade Desejada:</strong> ${item.onde_trabalhar}</p>
                             <p><strong>Data de Inclusão:</strong> ${item.created_at}</p>
                             <p><strong>Cargo Desejado:</strong> ${item.cargo}</p>
-                            <p><strong>Ja foi chamado para entrevista:</strong> ${item.chamar_entrevista}</p>
+                            <p><strong>Já foi chamado para entrevista:</strong> ${Boolean(item.chamar_entrevista) ? 'SIM' : 'NÃO'}</p>
                             <button class="view-cv" data-id="${item.id}">Ver Currículo</button>
                         `;
                         searchResults.appendChild(resultItem);
@@ -88,9 +88,10 @@ function displayResults(data) {
                 <p><strong>Cidade Desejada:</strong> ${item.onde_trabalhar}</p>
                 <p><strong>Data de Inclusão:</strong> ${item.created_at}</p>
                 <p><strong>Cargo Desejado:</strong> ${item.cargo}</p>
-                <p><strong>Ja foi chamado para entrevista:</strong> ${item.chamar_entrevista}</p>
+                <p><strong>Já foi chamado para entrevista:</strong> ${Boolean(item.chamar_entrevista) ? 'SIM' : 'NÃO'}</p>
                 <button class="view-cv" data-id="${item.id}">Ver Currículo</button>
-            `;
+            `
+            ;
             resultsContainer.appendChild(resultItem);
         });
 
