@@ -103,7 +103,7 @@
 
         <div class="button_class">
         <button onclick="voltarParaPaginaAnterior()">Voltar</button>
-        <button onclick="entrevista_pendente(candidato.id)">Chamar para Entrevista</button>
+        <button onclick="entrevista_pendente({{ candidato.id }})">Chamar para Entrevista</button>
         </div>
         <script src="{{ url_for('static', filename='js/vercurriculo.js') }}"></script>
 
