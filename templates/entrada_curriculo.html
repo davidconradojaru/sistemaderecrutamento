@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo</title>
-    <link rel="stylesheet" href="style.css"> <!-- Importa o arquivo CSS style.css -->
+    <link rel="stylesheet" href="../static/css/entrada_curri_style.css">
     <link rel="icon" type="image/x-icon" href="img/novalino.png">
 </head>
 <body>
     <div class="container">
-        <img src="img/logo.png" alt="Logo da Empresa" class="logo">
+        <img src="../static/img/logo.png" alt="Logo da Empresa" class="logo">
         <h1 class="titulo">Preencha o seu currículo</h1>
-        <form class="curriculoForm" action="enviar_curriculo.php" method="post">
+        <form class="curriculoForm">
             <div class="form-group">
                 <label for="ondeTrabalhar">Qual cidade você deseja trabalhar?</label>
                 <select id="ondeTrabalhar" name="ondeTrabalhar" required onchange="mostrarCargos()">
@@ -122,7 +122,6 @@
                         <label for="bairro">Bairro:</label>
                         <input type="text" id="bairro" name="bairro" required>
                     
-                   
                         <label for="cep">CEP:</label>
                         <input type="cep" id="cep" name="cep" required placeholder="Ex: XXXXXX-XXX">
                     </div>
@@ -219,6 +218,6 @@
             </div>
         </footer>
     </div>
-    <script src="script.js"></script> <!-- Importa o arquivo JavaScript script.js -->
+    <script src="static/js/entrada_curricu_script.js"></script> <!-- Importa o arquivo JavaScript script.js -->
 </body>
 </html>

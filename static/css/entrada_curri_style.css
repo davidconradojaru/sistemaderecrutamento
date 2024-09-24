@@ -1,0 +1,114 @@
+/* Estilo para o formulário de currículo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: yellow;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 23px blue;
+}
+
+.titulo {
+    text-align: center;
+    color: blue;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    
+}
+
+/* Estilo para os campos de endereço */
+.endereco {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.endereco label,
+.endereco input {
+    display: inline-block;
+    vertical-align: top; /* Alinha os elementos verticalmente ao topo */
+    margin-right: 10px; /* Espaçamento entre os elementos */
+}
+
+.endereco .form-group {
+    margin-bottom: 30px; /* Adiciona um espaçamento entre as linhas */
+}
+
+/* Estilo para o número e bairro na mesma linha */
+.endereco #numero,
+.endereco #bairro {
+    width: calc(21% - 5px); /* Define a largura para ocupar metade da linha com espaçamento */
+}
+
+.endereco #numero {
+    margin-right: 5px; /* Espaçamento entre os campos */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+}
+
+h1,h2,h3 {
+    color: blue;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 7px;
+    border: 2px solid blue;
+    border-radius: 5px;
+}
+
+select {
+    height: 40px;
+}
+
+.input-group {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #00416A;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
