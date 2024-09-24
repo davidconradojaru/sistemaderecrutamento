@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS  
 import psycopg2  
 
-app = Flask(__name__, template_folder='../templates') 
+app = Flask(__name__, template_folder='../templates',static_folder="../static") 
 CORS(app)  
 
 def get_database_connection():

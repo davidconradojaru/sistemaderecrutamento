@@ -43,3 +43,4 @@ function exibirEntrevistas(data) {
         resultadosContainer.innerHTML = '<p>Nenhum candidato encontrado.</p>';
     }
 }
+
