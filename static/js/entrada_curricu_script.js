@@ -2,6 +2,31 @@
     document.body.style.backgroundImage = "url('img/novalar.png')";
 }); */
 
+let currentTab = 0;
+showTab(currentTab);
+
+function showTab(n) {
+    const tabs = document.querySelectorAll('.tab');
+    tabs[currentTab].classList.remove('active');
+    tabs[n].classList.add('active');
+    currentTab = n;
+
+    // Disable previous buttons if at first tab
+    if (n === 0) {
+        document.querySelector('.tab-buttons').querySelector('button').disabled = true;
+    } else {
+        document.querySelector('.tab-buttons').querySelector('button').disabled = false;
+    }
+
+    // If at the last tab, change button text to "Enviar"
+    if (n === (tabs.length - 1)) {
+        document.querySelector('input[type="submit"]').style.display = 'block';
+    } else {
+        document.querySelector('input[type="submit"]').style.display = 'none';
+    }
+}
+
+
 function mostrarCargos() {
     var cidade = document.getElementById("ondeTrabalhar").value;
     var cargosDiv = document.getElementById("divCargos");
@@ -88,3 +113,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+

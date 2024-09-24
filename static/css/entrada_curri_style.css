@@ -1,9 +1,22 @@
 /* Estilo para o formulário de currículo */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: yellow;
+    height: 100vh; /* Faz o body ocupar toda a altura da tela */
+    margin: 0; /* Remove margens padrão */
+    background: linear-gradient(45deg, #f2ff3a, #000000, #6bc6f4, #063d8f);
+    background-size: 400% 400%; /* Aumenta o tamanho do fundo para um efeito de movimento */
+    animation: gradientAnimation 15s ease infinite; /* Animação do fundo */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
@@ -111,4 +124,18 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+.tab {
+    display: none;
+}
+.tab.active {
+    display: block;
+}
+.tab-buttons {
+    display: flex;
+    margin-bottom: 20px;
+}
+.tab-buttons button {
+    margin-right: 10px;
 }
