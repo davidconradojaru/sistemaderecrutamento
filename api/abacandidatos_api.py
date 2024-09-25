@@ -16,7 +16,6 @@ def get_database_connection():
 
 
 
-
 @app.route('/pesquisacandidato')
 def pesquisar_candidato():
     city = request.args.get('city', '').strip().lower()
@@ -134,7 +133,9 @@ def curriculo(id):
         return render_template('curriculo.html', candidato=candidato)
     else:
         return "Currículo não encontrado", 404
-    
+
+
+#RODAR PAGINA DE ENVIAR CURRICULO ENTRADA DOS DADOS
 @app.route('/entradacurriculo')
 def entradacurriculo():    
     return render_template('entrada_curriculo.html')
@@ -183,5 +184,6 @@ def listar_entrevistas():
 
     return jsonify(resultados)
 
-if __name__ == '__main__': 
-    app.run(debug=True)  
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

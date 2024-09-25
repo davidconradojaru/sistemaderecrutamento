@@ -2,7 +2,7 @@
 body {
     height: 100vh;
     margin: 0;
-    background: linear-gradient(45deg, #f2ff3a, #000000, #6bc6f4, #063d8f);
+    background: linear-gradient(45deg, #e1d019, #000000, #6bc6f4, #063d8f);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
 }
@@ -34,10 +34,8 @@ body {
 }
 
 .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Removido o duplicado */
     border-radius: 5px;
-    margin-bottom: 20px;
-    
 }
 
 /* Estilo para os campos de endereço */
@@ -53,10 +51,6 @@ body {
     display: inline-block;
     vertical-align: top;
     margin-right: 10px;
-}
-
-.form-group {
-    margin-bottom: 30px;
 }
 
 /* Estilo para o número e bairro na mesma linha */
@@ -75,7 +69,7 @@ label {
     color: #555;
 }
 
-h1,h2,h3 {
+h1, h2, h3 {
     color: blue;
 }
 
@@ -83,6 +77,7 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="number"],
+input[type="date"],
 select,
 textarea,
 input[type="file"] {
@@ -90,6 +85,7 @@ input[type="file"] {
     padding: 7px;
     border: 2px solid blue;
     border-radius: 5px;
+    margin-bottom: 7px;
 }
 
 select {
@@ -126,6 +122,27 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+.button-container {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espaçar os botões nas extremidades */
+    margin-bottom: 20px; /* Espaçamento abaixo do contêiner */
+    margin-top: 20px;
+}
+
+#btn-next, #btn-back {
+    background-color: #007bff; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 10px 20px; /* Espaçamento interno */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+#btn-next:hover, #btn-back:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
 .tab {
     display: none;
 }
@@ -134,9 +151,22 @@ input[type="submit"]:hover {
 }
 .tab-buttons {
     display: flex;
-    margin-bottom: 20px;
-    margin: 5px;
+    justify-content: space-around; /* Distribui os ícones uniformemente */
 }
-.tab-buttons button {
-    margin-right: 10px;
+
+.tab-icon {
+    font-size: 24px; /* Tamanho do ícone */
+    cursor: pointer; /* Mão ao passar o mouse, se desejado */
+    padding: 10px; /* Espaçamento ao redor do ícone */
+    transition: opacity 0.3s; /* Transição suave para a opacidade */
+}
+
+/* Mudança de opacidade ao passar o mouse, se desejar */
+.tab-icon:hover {
+    opacity: 0.7; /* Muda a opacidade ao passar o mouse */
+}
+
+/* Para ícones desabilitados */
+.tab-icon[disabled] {
+    opacity: 0.3; /* Para tornar os ícones desabilitados mais transparentes */
 }
