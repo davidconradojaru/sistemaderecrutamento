@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo</title>
+    <title>Envie seu Currículo - Novalar</title>
     <link rel="stylesheet" href="../static/css/entrada_curri_style.css">
-    <link rel="icon" type="image/x-icon" href="img/novalino.png">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/novalino.png') }}">
 <body>
     <div class="container">
         <img src="../static/img/logo.png" alt="Logo da Empresa" class="logo">
         <h1 class="titulo">Preencha o seu currículo</h1>
         <form class="curriculoForm" id="curriculoForm">
             <div class="tab-buttons">
-                <button type="button" onclick="showTab(0)">Informações Pessoais</button>
-                <button type="button" onclick="showTab(1)">Endereço</button>
-                <button type="button" onclick="showTab(2)">Referências Pessoais</button>
-                <button type="button" onclick="showTab(3)">Experiência</button>
-                <button type="button" onclick="showTab(4)">Formação</button>
-                <button type="button" onclick="showTab(5)">Sobre Você</button>
+                <button type="button" id="btn-info" onclick="showTab(0)">🧑 Informações</button>
+                <button type="button" id="btn-endereco" onclick="showTab(1)" disabled>🏠 Endereço</button>
+                <button type="button" id="btn-referencias" onclick="showTab(2)" disabled>👥 Referências</button>
+                <button type="button" id="btn-experiencia" onclick="showTab(3)" disabled>💼 Experiência</button>
+                <button type="button" id="btn-formacao" onclick="showTab(4)" disabled>🎓 Formação</button>
+                <button type="button" id="btn-sobre" onclick="showTab(5)" disabled>🗨️ Sobre Você</button>
             </div>
 
             <div class="tab active">
@@ -172,7 +172,7 @@
                 <label for="falesobrevoce">Fale sobre você:</label><br>
                 <textarea id="falesobrevoce" name="falesobrevoce"></textarea>
             </div>
-
+            
             <input type="submit" value="Enviar">
         </form>
         <footer class="footer">
@@ -182,32 +182,6 @@
             </div>
         </footer>
     </div>
-        <script>
-        
-        let currentTab = 0;
-        showTab(currentTab);
-
-        function showTab(n) {
-            const tabs = document.querySelectorAll('.tab');
-            tabs[currentTab].classList.remove('active');
-            tabs[n].classList.add('active');
-            currentTab = n;
-
-            // Disable previous buttons if at first tab
-            if (n === 0) {
-                document.querySelector('.tab-buttons').querySelector('button').disabled = true;
-            } else {
-                document.querySelector('.tab-buttons').querySelector('button').disabled = false;
-            }
-
-            // If at the last tab, change button text to "Enviar"
-            if (n === (tabs.length - 1)) {
-                document.querySelector('input[type="submit"]').style.display = 'block';
-            } else {
-                document.querySelector('input[type="submit"]').style.display = 'none';
-            }
-        }
-        </script>
     <script src="{{ url_for('static', filename='js/entrada_curricu_script.js') }}"></script>
 </body>
 </html>

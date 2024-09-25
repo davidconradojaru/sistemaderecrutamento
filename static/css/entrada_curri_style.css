@@ -135,6 +135,7 @@ input[type="submit"]:hover {
 .tab-buttons {
     display: flex;
     margin-bottom: 20px;
+    margin: 5px;
 }
 .tab-buttons button {
     margin-right: 10px;
