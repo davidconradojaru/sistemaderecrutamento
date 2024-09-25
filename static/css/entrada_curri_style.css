@@ -1,10 +1,10 @@
 /* Estilo para o formulário de currículo */
 body {
-    height: 100vh; /* Faz o body ocupar toda a altura da tela */
-    margin: 0; /* Remove margens padrão */
+    height: 100vh;
+    margin: 0;
     background: linear-gradient(45deg, #f2ff3a, #000000, #6bc6f4, #063d8f);
-    background-size: 400% 400%; /* Aumenta o tamanho do fundo para um efeito de movimento */
-    animation: gradientAnimation 15s ease infinite; /* Animação do fundo */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
 }
 
 @keyframes gradientAnimation {
@@ -51,22 +51,22 @@ body {
 .endereco label,
 .endereco input {
     display: inline-block;
-    vertical-align: top; /* Alinha os elementos verticalmente ao topo */
-    margin-right: 10px; /* Espaçamento entre os elementos */
+    vertical-align: top;
+    margin-right: 10px;
 }
 
-.endereco .form-group {
-    margin-bottom: 30px; /* Adiciona um espaçamento entre as linhas */
+.form-group {
+    margin-bottom: 30px;
 }
 
 /* Estilo para o número e bairro na mesma linha */
 .endereco #numero,
 .endereco #bairro {
-    width: calc(21% - 5px); /* Define a largura para ocupar metade da linha com espaçamento */
+    width: calc(21% - 5px);
 }
 
 .endereco #numero {
-    margin-right: 5px; /* Espaçamento entre os campos */
+    margin-right: 5px; 
 }
 
 label {

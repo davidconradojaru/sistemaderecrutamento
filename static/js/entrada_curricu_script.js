@@ -2,38 +2,38 @@
     document.body.style.backgroundImage = "url('img/novalar.png')";
 }); */
 
-
 function mostrarCargos() {
     var cidade = document.getElementById("ondeTrabalhar").value;
-    var cargosDiv = document.getElementById("divCargos");
     var cargosSelect = document.getElementById("cargo");
+    var labelCargo = document.getElementById("labelCargo");
     cargosSelect.innerHTML = ""; // Limpa as opções existentes
 
+    var cargos;
+
     if (cidade === "JARU") {
-        var cargos = ["Vendedor", "Auxiliar de Limpeza", "Montador","Motorista","Crediarista", "Gerente de Vendas","Auxiliar Centro de Distribuição","Contabilidade", "Compras", "Marketing", "Recursos Humanos", "Análise de Crédito", "Cobrança", "Tecnologia da Informação"];
+        cargos = ["Vendedor", "Auxiliar de Limpeza", "Montador", "Motorista", "Crediarista", "Gerente de Vendas", "Auxiliar Centro de Distribuição", "Contabilidade", "Compras", "Marketing", "Recursos Humanos", "Análise de Crédito", "Cobrança", "Tecnologia da Informação"];
     } else {
-        var cargos = ["Vendedor", "Auxiliar de Limpeza", "Montador","Motorista","Crediarista", "Gerente de Vendas"];
+        cargos = ["Vendedor", "Auxiliar de Limpeza", "Montador", "Motorista", "Crediarista", "Gerente de Vendas"];
     }
 
     // Adiciona as opções de cargos ao select
     for (var i = 0; i < cargos.length; i++) {
         var option = document.createElement("option");
+        option.value = cargos[i]; // Atribui o valor ao option
         option.text = cargos[i];
         cargosSelect.add(option);
     }
 
-    // Exibe a div de cargos
-    cargosDiv.style.display = "block";
+    // Exibe o label e o select de cargos
+    if (cargos.length > 0) {
+        labelCargo.style.display = "block"; // Mostra o label
+        cargosSelect.style.display = "block"; // Mostra o select de cargos
+    } else {
+        labelCargo.style.display = "none"; // Oculta o label se não houver cargos
+        cargosSelect.style.display = "none"; // Oculta o select de cargos
+    }
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
-    var inputTelefone = document.getElementById('telefone');
-    inputTelefone.addEventListener('input', formatarTelefone);
-
-    var inputTelefoneReferencia = document.getElementById('telefoneReferencia');
-    inputTelefoneReferencia.addEventListener('input', formatarTelefone);
-});
 
 
 

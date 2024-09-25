@@ -89,11 +89,10 @@
                     <option value="THEOBROMA">THEOBROMA</option>
                     <option value="VALE DO ANARI">VALE DO ANARI</option>
                 </select>
-                <label for="cargo">Qual cargo você deseja ocupar?</label>
+                <label id="labelCargo" for="cargo" style="display: none;">Qual cargo deseja ocupar?</label>
                 <select id="cargo" name="cargo" required style="display: none;">
                     <option value="" disabled selected>Selecione</option>
                 </select>
-
 
                 
             </div>
@@ -209,6 +208,6 @@
             }
         }
         </script>
-    <script src="static/js/entrada_curricu_script.js"></script>
+    <script src="{{ url_for('static', filename='js/entrada_curricu_script.js') }}"></script>
 </body>
 </html>

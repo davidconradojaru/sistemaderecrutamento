@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS  
 import psycopg2  
 
-app = Flask(__name__, template_folder='../templates',static_folder="../static") 
+app = Flask(__name__, template_folder='../templates',static_folder="../static")
 CORS(app)  
 
 def get_database_connection():
@@ -135,6 +135,9 @@ def curriculo(id):
     else:
         return "Currículo não encontrado", 404
     
+@app.route('/entradacurriculo')
+def entradacurriculo():    
+    return render_template('entrada_curriculo.html')
     
     
 #ROTA PARA BOTÃO CHAMAR ENTREVISTA
