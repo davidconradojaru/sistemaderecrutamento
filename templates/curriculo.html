@@ -19,7 +19,7 @@
             padding: 20px;
             background: #fff;
             border-radius: 8px;
-            border-color: blue;
+            border-color: #034991;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
@@ -45,12 +45,39 @@
         a:hover {
             background-color: #0056b3;
         }
+        .button_class {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        
+        .button_class button {
+            background-color: #034991;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .button_class button:hover {
+            background-color: darkblue;
+        }
+        
+        .left-button {
+            align-self: flex-start;
+        }
+        
+        .right-button {
+            align-self: flex-end;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Currículo de {{ candidato.nome }}</h1>
         <p><strong>Nome:</strong> {{ candidato.nome }}</p>
+        <p><strong>ID:</strong> {{ candidato.id }}</p>
         <p><strong>Cidade Desejada:</strong> {{ candidato.onde_trabalhar }}</p>
         <p><strong>Data de Nascimento:</strong> {{ candidato.data_nascimento }}</p>
         <p><strong>CPF:</strong> {{ candidato.cpf }}</p>
@@ -74,14 +101,12 @@
         <p><strong>Fale Sobre Você:</strong> {{ candidato.falesobrevoce }}</p>
         <p><strong>Data de Inclusão:</strong> {{ candidato.created_at }}</p>
 
+        <div class="button_class">
         <button onclick="voltarParaPaginaAnterior()">Voltar</button>
+        <button onclick="entrevista_pendente({{ candidato.id }})">Chamar para Entrevista</button>
+        </div>
+        <script src="{{ url_for('static', filename='js/vercurriculo.js') }}"></script>
 
-        <script>
-        function voltarParaPaginaAnterior() {
-            // Voltar para a página anterior mantendo o estado da página home
-            window.history.back();
-        }
-        </script>
     </div>
 </body>
 </html>

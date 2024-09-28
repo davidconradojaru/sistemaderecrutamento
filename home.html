@@ -15,16 +15,12 @@
         <ul class="tab-list">
             
             <li class="tab-item active" data-tab="Candidatos">Candidatos</li>
+            <li class="tab-item" data-tab="Entrevistas">Entrevistas</li>
             <li class="tab-item" data-tab="Aprovações">Aprovações</li>
             <li class="tab-item" data-tab="Etapas">Etapas</li>
             
         </ul>
     </nav>
-
-    <section id="dashboard" class="tab-content">
-        <h2>Dashboard</h2>
-        <p>Aqui será exibido um dashboard com os dados do soft ainda a definir.</p>
-    </section>
 
     <section id="Candidatos" class="tab-content active">
         <h2 class="titulocand">Lista de Candidatos</h2>
@@ -38,7 +34,24 @@
         <div class="filter-container">
             <label for="city">Cidade:</label>
             <select id="city">
+                <option value="" disabled selected>Selecione</option>
                 <option value="">Todas</option>
+                <option value="ALVORADA D' OESTE">ALVORADA D' OESTE</option>
+                <option value="CACOAL">CACOAL</option>
+                <option value="CEREJEIRAS">CEREJEIRAS</option>
+                <option value="COLORADO DO OESTE">COLORADO DO OESTE</option>
+                <option value="ESPIGÃO DO OESTE">ESPIGÃO DO OESTE</option>
+                <option value="GOVERNADOR JORGE TEIXEIRA">GOVERNADOR JORGE TEIXEIRA</option>
+                <option value="JARU">JARU</option>
+                <option value="JI-PARANÁ">JI-PARANÁ</option>
+                <option value="MIRANTE DA SERRA">MIRANTE DA SERRA</option>
+                <option value="NOVA BRASILÂNDIA D OESTE">NOVA BRASILÂNDIA D OESTE</option>
+                <option value="SÃO FRANCISCO DO GUAPORÉ">SÃO FRANCISCO DO GUAPORÉ</option>
+                <option value="SÃO MIGUEL DO GUAPORÉ">SÃO MIGUEL DO GUAPORÉ</option>
+                <option value="SERINGUEIRAS">SERINGUEIRAS</option>
+                <option value="TARILÂNDIA">TARILÂNDIA</option>
+                <option value="THEOBROMA">THEOBROMA</option>
+                <option value="VALE DO ANARI">VALE DO ANARI</option>
                 <option value="Porto Velho">Porto Velho</option>
                 <option value="Ji-Paraná">Ji-Paraná</option>
                 <option value="Ariquemes">Ariquemes</option>
@@ -58,10 +71,15 @@
         </div>
 
         <div id="searchResults">
+        </div>
         <div id="pagination"></div>
 
     </section>
 
+    <section id="Entrevistas" class="tab-content">
+        <div id="resultadosEntrevista"></div>
+    </section>
+    
     <section id="Aprovações" class="tab-content">
         <h2>Currículos Aguardando Aprovação</h2>
         <p>Aqui serão exibidos os currículos aguardando aprovação.</p>
@@ -71,8 +89,9 @@
         <h2>Currículos Aprovados e Suas Etapas</h2>
         <p>Aqui será exibido o progresso dos currículos aprovados.</p>
     </section>
-    <script src="static/js/abacandidatos.js"></script> <!-- aba candidatos -->
-    <script src="static/js/home.js"></script> <!-- Incluindo o JavaScript -->
+    <script src="static/js/abacandidatos.js"></script> 
+    <script src="static/js/home.js"></script> 
+    <script src="static/js/fazerentrevista.js"></script>
     
 </body>
 </html>

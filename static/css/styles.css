@@ -9,7 +9,7 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #fbff00;
+    background-color: yellow;
     color: #000000;
     padding: 20px;
     text-align: center;
@@ -54,7 +54,7 @@ nav {
 }
 
 .tab-item.active {
-    border-bottom: 3px solid #007bff;
+    border-bottom: 3px solid #034991;
     color: #007bff;
 }
 
@@ -87,7 +87,7 @@ nav {
 
 #searchInput {
     padding: 10px 15px;
-    border: 2px solid #007bff;
+    border: 2px solid #034991;
     border-radius: 5px;
     font-size: 16px;
     width: 250px;
@@ -120,12 +120,12 @@ nav {
     transform: scale(0.98);
 }
 
-#searchResults {
+#searchResults, #resultadosEntrevista {
     margin-top: 20px;
     
 }
 
-.result-item {
+.result-item, .resultado-item {
     background-color: #fff;
     padding: 15px;
     margin-bottom: 10px;

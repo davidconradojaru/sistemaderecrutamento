@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             <p><strong>Cidade Desejada:</strong> ${item.onde_trabalhar}</p>
                             <p><strong>Data de Inclusão:</strong> ${item.created_at}</p>
                             <p><strong>Cargo Desejado:</strong> ${item.cargo}</p>
+                            <p><strong>Já foi chamado para entrevista:</strong> ${Boolean(item.chamar_entrevista) ? 'SIM' : 'NÃO'}</p>
                             <button class="view-cv" data-id="${item.id}">Ver Currículo</button>
                         `;
                         searchResults.appendChild(resultItem);
@@ -48,11 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 searchResults.innerHTML = '<p>Erro ao buscar candidatos.</p>';
             });
     }
-
-    
-
-
-
 
 // Função de filtros cidade e cargo
 document.getElementById('filterButton').addEventListener('click', function() {
@@ -92,8 +88,10 @@ function displayResults(data) {
                 <p><strong>Cidade Desejada:</strong> ${item.onde_trabalhar}</p>
                 <p><strong>Data de Inclusão:</strong> ${item.created_at}</p>
                 <p><strong>Cargo Desejado:</strong> ${item.cargo}</p>
+                <p><strong>Já foi chamado para entrevista:</strong> ${Boolean(item.chamar_entrevista) ? 'SIM' : 'NÃO'}</p>
                 <button class="view-cv" data-id="${item.id}">Ver Currículo</button>
-            `;
+            `
+            ;
             resultsContainer.appendChild(resultItem);
         });
 
@@ -112,7 +110,6 @@ function displayResults(data) {
 
 
 function viewCurriculo(id) {
-    // Redireciona para a página do currículo com o ID do candidato
     window.location.href = `http://127.0.0.1:5000/curriculo/${id}`;
 }
 
@@ -159,3 +156,4 @@ searchButton.addEventListener("click", function() {
     fetchResults();
 });
 });
+

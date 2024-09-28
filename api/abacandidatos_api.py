@@ -2,18 +2,17 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS  
 import psycopg2  
 
-app = Flask(__name__, template_folder='../templates') 
+app = Flask(__name__, template_folder='../templates',static_folder="../static")
 CORS(app)  
 
 def get_database_connection():
     conn = psycopg2.connect(
-        host="localhost",  
-        database="recruit",  
-        user="postgres",  
-        password="1478963" 
+        host="localhost",
+        database="recruit",
+        user="postgres",
+        password="1478963"
     )
     return conn 
-
 
 
 
@@ -86,11 +85,11 @@ def pesquisar_candidato():
             "formacao_academica": row[21],
             "formacao": row[22],
             "falesobrevoce": row[23],
-            "created_at": row[24].strftime('%d/%m/%y %H:%M:%S') if row[24] else None
+            "created_at": row[24].strftime('%d/%m/%y %H:%M:%S') if row[24] else None,
+            "chamar_entrevista": row[25]
         })
 
     return jsonify(candidatos)
-
 
 
 
@@ -135,5 +134,56 @@ def curriculo(id):
     else:
         return "Currículo não encontrado", 404
 
-if __name__ == '__main__': 
-    app.run(debug=True)  
+
+#RODAR PAGINA DE ENVIAR CURRICULO ENTRADA DOS DADOS
+@app.route('/entradacurriculo')
+def entradacurriculo():    
+    return render_template('entrada_curriculo.html')
+    
+    
+#ROTA PARA BOTÃO CHAMAR ENTREVISTA
+@app.route('/curriculo/<int:id>/chama_entrevista', methods=['POST'])
+def alterar_entrevista(id):
+    conn = get_database_connection()
+    cursor = conn.cursor()
+    
+    try:
+        cursor.execute("UPDATE noval.curriculo SET chamar_entrevista = TRUE WHERE id = %s", (id,))
+        conn.commit()
+        
+        if cursor.rowcount == 0:
+            return "Currículo não encontrado", 404
+
+        return jsonify({'status': 'sucesso'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+#ROTA PARA EXIBIR NA ABA ENTREVISTA SE NO BD COLUNA CHAMAR_ENTREVISTA FOR TRUE
+@app.route('/entrevistas', methods=['GET'])
+def listar_entrevistas():
+    conn = get_database_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT * FROM noval.curriculo WHERE chamar_entrevista = TRUE")
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    resultados = []
+    for row in rows:
+        resultados.append({
+            "id": row[0],
+            "onde_trabalhar": row[1],
+            "cargo": row[2],
+            "nome": row[3],
+            "created_at": row[24].strftime('%d/%m/%y %H:%M:%S') if row[24] else None
+        })
+
+    return jsonify(resultados)
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

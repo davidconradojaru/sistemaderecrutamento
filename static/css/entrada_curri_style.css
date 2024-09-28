@@ -1,0 +1,172 @@
+/* Estilo para o formulário de currículo */
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(45deg, #e1d019, #000000, #6bc6f4, #063d8f);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 23px blue;
+}
+
+.titulo {
+    text-align: center;
+    color: blue;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Removido o duplicado */
+    border-radius: 5px;
+}
+
+/* Estilo para os campos de endereço */
+.endereco {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.endereco label,
+.endereco input {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+/* Estilo para o número e bairro na mesma linha */
+.endereco #numero,
+.endereco #bairro {
+    width: calc(21% - 5px);
+}
+
+.endereco #numero {
+    margin-right: 5px; 
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+}
+
+h1, h2, h3 {
+    color: blue;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 7px;
+    border: 2px solid blue;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+select {
+    height: 40px;
+}
+
+.input-group {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+}
+
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #00416A;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.button-container {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espaçar os botões nas extremidades */
+    margin-bottom: 20px; /* Espaçamento abaixo do contêiner */
+    margin-top: 20px;
+}
+
+#btn-next, #btn-back {
+    background-color: #007bff; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 10px 20px; /* Espaçamento interno */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+#btn-next:hover, #btn-back:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+.tab {
+    display: none;
+}
+.tab.active {
+    display: block;
+}
+.tab-buttons {
+    display: flex;
+    justify-content: space-around; /* Distribui os ícones uniformemente */
+}
+
+.tab-icon {
+    font-size: 24px; /* Tamanho do ícone */
+    cursor: pointer; /* Mão ao passar o mouse, se desejado */
+    padding: 10px; /* Espaçamento ao redor do ícone */
+    transition: opacity 0.3s; /* Transição suave para a opacidade */
+}
+
+/* Mudança de opacidade ao passar o mouse, se desejar */
+.tab-icon:hover {
+    opacity: 0.7; /* Muda a opacidade ao passar o mouse */
+}
+
+/* Para ícones desabilitados */
+.tab-icon[disabled] {
+    opacity: 0.3; /* Para tornar os ícones desabilitados mais transparentes */
+}
