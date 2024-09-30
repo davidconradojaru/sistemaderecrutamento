@@ -2,6 +2,29 @@
     document.body.style.backgroundImage = "url('img/novalar.png')";
 }); */
 
+// Lista de CPFs em blacklist
+const blacklistCPFs = [
+    '00000000000',
+    '12345678900',
+    '11111111111',
+    '22222222222',
+    '33333333333',
+    '44444444444',
+    '55555555555',
+    '66666666666',
+    '77777777777',
+    '88888888888',
+    '99999999999',
+    '01234567890',
+    '98765432100',
+    '12312312312',
+    '45645645645',
+    '78978978978'
+];
+
+function isCpfBlacklisted(cpf) {
+    return blacklistCPFs.includes(cpf);
+}
 
 let currentTab = 0;
 showTab(currentTab);
@@ -154,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+/*  FUNÇÃO QUE FUNCIONA PARA ENVIAR OS DADOS DE ENTRADA PARA O BD
 document.getElementById('curriculoForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Previne o envio padrão do formulário
 
@@ -206,5 +230,70 @@ document.getElementById('curriculoForm').addEventListener('submit', function(eve
     .catch(error => {
         alert('Ocorreu um erro: ' + error.message);
     });
-});
+}); */ 
 
+
+//AINDA NÃO FUNCIONOU BEM VERIFICAR AQUI PARA BAIXO// A FUNÇÃO DE CIMA FUNCIONOU
+document.getElementById('curriculoForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previne o envio padrão do formulário
+
+     // Verificando se o CPF está na blacklist
+    if (isCpfBlacklisted(cpf)) {
+        alert('O CPF informado está na blacklist. Por favor, verifique e insira um CPF válido.');
+        return; // Impede o envio do formulário
+    }
+    // Coletando os dados do formulário
+    const formData = {
+        nome: document.getElementById('nome').value,
+        data_nascimento: document.getElementById('nascimento').value,
+        cpf: document.getElementById('cpf').value,
+        telefone: document.getElementById('telefone').value,
+        email: document.getElementById('email').value,
+        estado_civil: document.getElementById('estadoCivil').value,
+        genero: document.getElementById('genero').value,
+        nacionalidade: document.getElementById('nacionalidade').value,
+        endereco: document.getElementById('endereco').value,
+        numero: document.getElementById('numero').value,
+        bairro: document.getElementById('bairro').value,
+        cep: document.getElementById('cep').value,
+        cidade: document.getElementById('cidade').value,
+        nome_referencia: document.getElementById('nomeReferencia').value,
+        telefone_referencia: document.getElementById('telefoneReferencia').value,
+        descricao_referencia: document.getElementById('descricaoReferencia').value,
+        descricao_locais: document.getElementById('descricaoLocais').value,
+        descricao_experiencia: document.getElementById('descricaoExperiencia').value,
+        formacao_academica: document.getElementById('formacaoAcademica').value,
+        formacao: document.getElementById('formacao').value,
+        falesobrevoce: document.getElementById('falesobrevoce').value,
+        onde_trabalhar: document.getElementById('ondeTrabalhar').value,
+        cargo: document.getElementById('cargo').value
+    };
+
+    // Enviando os dados para o servidor
+       // Enviando os dados para o servidor
+    fetch('/entradadados_curriculo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro na requisição: ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Oculta o formulário
+        document.querySelector('.curriculoForm').style.display = 'none';
+
+        // Exibir mensagem de sucesso na página
+        const successMessage = document.getElementById('successMessage');
+        successMessage.style.display = 'block'; // Exibe a mensagem
+        successMessage.innerHTML = `<h2>${data.message || 'Você enviou o seu currículo com sucesso!'}</h2><p>Aguarde que nossa equipe irá analisar o seu currículo!</p>`;
+    })
+    .catch(error => {
+        alert('Ocorreu um erro: ' + error.message);
+    });
+});
