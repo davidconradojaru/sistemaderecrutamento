@@ -163,7 +163,7 @@ nav {
     border-color: #007bff;
 }
 
-#filterButton {
+#filterButton, button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;

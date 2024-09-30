@@ -54,15 +54,29 @@ document.addEventListener("DOMContentLoaded", function() {
 document.getElementById('filterButton').addEventListener('click', function() {
     const city = document.getElementById('city').value;
     const position = document.getElementById('position').value;
+    const chamarEntrevista = document.getElementById('chamar_entrevista').value;
 
     // Função para buscar os candidatos com base nos filtros aplicados
-    searchCandidates(city, position);
+    searchCandidates(city, position, chamarEntrevista);
 });
 
-function searchCandidates(city, position) {
-    // Esta função deve enviar uma requisição à sua API/backend, passando os filtros como parâmetros
-    // Exemplo de uma requisição fetch:
-    fetch(`http://127.0.0.1:5000/pesquisacandidato?city=${encodeURIComponent(city)}&position=${encodeURIComponent(position)}`)
+function searchCandidates(city, position, chamarEntrevista) {
+    let url = `http://127.0.0.1:5000/pesquisacandidato?`;
+
+    if (city) {
+        url += `city=${encodeURIComponent(city)}&`;
+    }
+    if (position) {
+        url += `position=${encodeURIComponent(position)}&`;
+    }
+    if (chamarEntrevista) {
+        url += `chamar_entrevista=${encodeURIComponent(chamarEntrevista)}&`;
+    }
+
+    // Remover o último '&' se existir
+    url = url.slice(0, -1); 
+
+    fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -73,7 +87,7 @@ function searchCandidates(city, position) {
             displayResults(data);
         })
         .catch(error => console.error('Erro:', error));
-}
+    }
 
 function displayResults(data) {
     const resultsContainer = document.getElementById('searchResults');
@@ -120,12 +134,16 @@ function salvarEstadoPagina() {
     localStorage.setItem('scrollPosition', window.scrollY);
     // Salvar o termo de pesquisa no localStorage
     localStorage.setItem('searchQuery', searchInput.value.trim());
+    // Salvar a aba ativa no localStorage
+    localStorage.setItem('activeTab', document.querySelector('.tab-item.active').getAttribute('data-tab'));
 }
+
 
 function restaurarEstadoPagina() {
     const savedResults = localStorage.getItem('searchResults');
     const savedScrollPosition = localStorage.getItem('scrollPosition');
     const savedQuery = localStorage.getItem('searchQuery');
+    const activeTab = localStorage.getItem('activeTab');
 
     if (savedResults) {
         searchResults.innerHTML = savedResults;
@@ -146,7 +164,22 @@ function restaurarEstadoPagina() {
     if (savedQuery) {
         searchInput.value = savedQuery;
     }
+
+    
+    if (activeTab) {
+        document.querySelectorAll('.tab-item').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.querySelector(`.tab-item[data-tab="${activeTab}"]`).classList.add('active');
+        
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        document.getElementById(activeTab).classList.add('active');
+    }
 }
+
 
 
 // Restaurar o estado da página ao carregar

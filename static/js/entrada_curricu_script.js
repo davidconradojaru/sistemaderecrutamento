@@ -154,3 +154,56 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+document.getElementById('curriculoForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previne o envio padrão do formulário
+
+    // Coletando os dados do formulário
+    const formData = {
+        nome: document.getElementById('nome').value,
+        data_nascimento: document.getElementById('nascimento').value,
+        cpf: document.getElementById('cpf').value,
+        telefone: document.getElementById('telefone').value,
+        email: document.getElementById('email').value,
+        estado_civil: document.getElementById('estadoCivil').value,
+        genero: document.getElementById('genero').value,
+        nacionalidade: document.getElementById('nacionalidade').value,
+        endereco: document.getElementById('endereco').value,
+        numero: document.getElementById('numero').value,
+        bairro: document.getElementById('bairro').value,
+        cep: document.getElementById('cep').value,
+        cidade: document.getElementById('cidade').value,
+        nome_referencia: document.getElementById('nomeReferencia').value,
+        telefone_referencia: document.getElementById('telefoneReferencia').value,
+        descricao_referencia: document.getElementById('descricaoReferencia').value,
+        descricao_locais: document.getElementById('descricaoLocais').value,
+        descricao_experiencia: document.getElementById('descricaoExperiencia').value,
+        formacao_academica: document.getElementById('formacaoAcademica').value,
+        formacao: document.getElementById('formacao').value,
+        falesobrevoce: document.getElementById('falesobrevoce').value,
+        onde_trabalhar: document.getElementById('ondeTrabalhar').value,
+        cargo: document.getElementById('cargo').value
+    };
+
+    // Enviando os dados para o servidor
+    fetch('/entradadados_curriculo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro na requisição: ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert(data.message || 'Dados enviados com sucesso!');
+        // Limpar o formulário após o envio, se desejado
+        document.getElementById('curriculoForm').reset();
+    })
+    .catch(error => {
+        alert('Ocorreu um erro: ' + error.message);
+    });
+});
