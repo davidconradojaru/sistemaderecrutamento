@@ -207,3 +207,4 @@ document.getElementById('curriculoForm').addEventListener('submit', function(eve
         alert('Ocorreu um erro: ' + error.message);
     });
 });
+
