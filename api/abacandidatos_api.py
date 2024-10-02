@@ -198,9 +198,7 @@ def listar_entrevistas():
 @app.route('/curriculo/<int:id>/status_entrevista', methods=['GET'])
 def status_entrevista(id):
     
-
-
-
+    
     conn = get_database_connection()
     cursor = conn.cursor()
     
