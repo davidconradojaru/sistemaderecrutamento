@@ -271,7 +271,6 @@ document.getElementById('curriculoForm').addEventListener('submit', function(eve
     };
 
     // Enviando os dados para o servidor
-       // Enviando os dados para o servidor
     fetch('/entradadados_curriculo', {
         method: 'POST',
         headers: {
