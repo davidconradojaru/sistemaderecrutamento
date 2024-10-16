@@ -230,10 +230,11 @@ document.getElementById('curriculoForm').addEventListener('submit', function(eve
     .catch(error => {
         alert('Ocorreu um erro: ' + error.message);
     });
-}); */ 
-
+}); 
+*/
 
 //AINDA NÃO FUNCIONOU BEM VERIFICAR AQUI PARA BAIXO// A FUNÇÃO DE CIMA FUNCIONOU
+
 document.getElementById('curriculoForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Previne o envio padrão do formulário
 
