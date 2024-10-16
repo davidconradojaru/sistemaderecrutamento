@@ -149,8 +149,7 @@ def curriculo(id):
 @app.route('/entradacurriculo')
 def entradacurriculo():    
     return render_template('entrada_curriculo.html')
-    
-    
+
 #ROTA PARA BOTÃO CHAMAR ENTREVISTA
 @app.route('/curriculo/<int:id>/chama_entrevista', methods=['POST'])
 def alterar_entrevista(id):

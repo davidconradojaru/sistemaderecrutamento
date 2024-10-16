@@ -2,10 +2,6 @@ function voltarParaPaginaAnterior() {
     window.history.back();
 }
 
-function voltarParaPaginaAnterior() {
-    window.history.back();
-}
-
 function entrevista_pendente(candidatoId) {
     // Verifica o status de chama_entrevista
     fetch(`http://127.0.0.1:5000/curriculo/${candidatoId}/status_entrevista`)

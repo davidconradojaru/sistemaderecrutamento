@@ -50,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
+
+
 // Função de filtros cidade e cargo
 document.getElementById('filterButton').addEventListener('click', function() {
     const city = document.getElementById('city').value;
@@ -129,7 +131,7 @@ function viewCurriculo(id) {
 
 function salvarEstadoPagina() {
     // Salvar os resultados da pesquisa no localStorage
-    localStorage.setItem('searchResults', searchResults.innerHTML);
+    //localStorage.setItem('searchResults', searchResults.innerHTML);
     // Salvar a posição de rolagem no localStorage
     localStorage.setItem('scrollPosition', window.scrollY);
     // Salvar o termo de pesquisa no localStorage
@@ -181,8 +183,6 @@ function restaurarEstadoPagina() {
 }
 
 
-
-// Restaurar o estado da página ao carregar
 restaurarEstadoPagina();
 
 searchButton.addEventListener("click", function() {
