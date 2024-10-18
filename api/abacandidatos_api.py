@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify, render_template  
 from flask_cors import CORS
 from datetime import datetime
-import psycopg2  
+import psycopg2
+
 
 
 app = Flask(__name__, template_folder='../templates',static_folder="../static")
@@ -172,7 +173,9 @@ def alterar_entrevista(id):
 
 #ROTA PARA EXIBIR NA ABA ENTREVISTA SE NO BD COLUNA CHAMAR_ENTREVISTA FOR TRUE
 @app.route('/entrevistas', methods=['GET'])
-def listar_entrevistas():
+def listar_entrevistas():    
+
+#VERIRIFICA CPF EXISTENTE NA ENTRADA E PERGUNTA AO USUARIO
     conn = get_database_connection()
     cursor = conn.cursor()
     
@@ -193,11 +196,12 @@ def listar_entrevistas():
 
     return jsonify(resultados)
 
+
+
+
 #ENDPOINT PARA CONSULTAR ENTREVISTA ANTES DE CHAMAR BOTÃO DE CHAMA ENTREVISTA
 @app.route('/curriculo/<int:id>/status_entrevista', methods=['GET'])
 def status_entrevista(id):
-    
-    
     conn = get_database_connection()
     cursor = conn.cursor()
     
@@ -215,6 +219,8 @@ def status_entrevista(id):
     finally:
         cursor.close()
         conn.close()
+        
+
 @app.route('/entradadados_curriculo', methods=['POST'])
 def enviar_curriculo():
     data = request.json
@@ -275,6 +281,7 @@ def enviar_curriculo():
     finally:
         cursor.close()
         conn.close()
+
 
 
 if __name__ == '__main__':

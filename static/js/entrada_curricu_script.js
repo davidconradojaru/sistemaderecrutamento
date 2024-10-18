@@ -176,67 +176,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-/*  FUNÇÃO QUE FUNCIONA PARA ENVIAR OS DADOS DE ENTRADA PARA O BD
+//FUNÇÃO QUE FUNIONA AQUI
 document.getElementById('curriculoForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Previne o envio padrão do formulário
-
-    // Coletando os dados do formulário
-    const formData = {
-        nome: document.getElementById('nome').value,
-        data_nascimento: document.getElementById('nascimento').value,
-        cpf: document.getElementById('cpf').value,
-        telefone: document.getElementById('telefone').value,
-        email: document.getElementById('email').value,
-        estado_civil: document.getElementById('estadoCivil').value,
-        genero: document.getElementById('genero').value,
-        nacionalidade: document.getElementById('nacionalidade').value,
-        endereco: document.getElementById('endereco').value,
-        numero: document.getElementById('numero').value,
-        bairro: document.getElementById('bairro').value,
-        cep: document.getElementById('cep').value,
-        cidade: document.getElementById('cidade').value,
-        nome_referencia: document.getElementById('nomeReferencia').value,
-        telefone_referencia: document.getElementById('telefoneReferencia').value,
-        descricao_referencia: document.getElementById('descricaoReferencia').value,
-        descricao_locais: document.getElementById('descricaoLocais').value,
-        descricao_experiencia: document.getElementById('descricaoExperiencia').value,
-        formacao_academica: document.getElementById('formacaoAcademica').value,
-        formacao: document.getElementById('formacao').value,
-        falesobrevoce: document.getElementById('falesobrevoce').value,
-        onde_trabalhar: document.getElementById('ondeTrabalhar').value,
-        cargo: document.getElementById('cargo').value
-    };
-
-    // Enviando os dados para o servidor
-    fetch('/entradadados_curriculo', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro na requisição: ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        alert(data.message || 'Dados enviados com sucesso!');
-        // Limpar o formulário após o envio, se desejado
-        document.getElementById('curriculoForm').reset();
-    })
-    .catch(error => {
-        alert('Ocorreu um erro: ' + error.message);
-    });
-}); 
-*/
-
-//AINDA NÃO FUNCIONOU BEM VERIFICAR AQUI PARA BAIXO// A FUNÇÃO DE CIMA FUNCIONOU
-
-document.getElementById('curriculoForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Previne o envio padrão do formulário
+    const cpf = document.getElementById('cpf').value;
 
      // Verificando se o CPF está na blacklist
     if (isCpfBlacklisted(cpf)) {
@@ -297,3 +240,99 @@ document.getElementById('curriculoForm').addEventListener('submit', function(eve
         alert('Ocorreu um erro: ' + error.message);
     });
 });
+
+
+
+// document.getElementById('curriculoForm').addEventListener('submit', function(event) {
+//     event.preventDefault(); // Previne o envio padrão do formulário
+
+//     const cpf = document.getElementById('cpf').value;
+
+//     // Verificando se o CPF está na blacklist
+//     if (isCpfBlacklisted(cpf)) {
+//         alert('O CPF informado está na blacklist. Por favor, verifique e insira um CPF válido.');
+//         return; // Impede o envio do formulário
+//     }
+
+//     // Verificando se o CPF já existe no banco de dados
+//     verificarCpfEAvancar(cpf).then(shouldProceed => {
+//         if (shouldProceed) {
+//             // Coletando os dados do formulário
+//             const formData = {
+//                 nome: document.getElementById('nome').value,
+//                 data_nascimento: document.getElementById('nascimento').value,
+//                 cpf: cpf,
+//                 telefone: document.getElementById('telefone').value,
+//                 email: document.getElementById('email').value,
+//                 estado_civil: document.getElementById('estadoCivil').value,
+//                 genero: document.getElementById('genero').value,
+//                 nacionalidade: document.getElementById('nacionalidade').value,
+//                 endereco: document.getElementById('endereco').value,
+//                 numero: document.getElementById('numero').value,
+//                 bairro: document.getElementById('bairro').value,
+//                 cep: document.getElementById('cep').value,
+//                 cidade: document.getElementById('cidade').value,
+//                 nome_referencia: document.getElementById('nomeReferencia').value,
+//                 telefone_referencia: document.getElementById('telefoneReferencia').value,
+//                 descricao_referencia: document.getElementById('descricaoReferencia').value,
+//                 descricao_locais: document.getElementById('descricaoLocais').value,
+//                 descricao_experiencia: document.getElementById('descricaoExperiencia').value,
+//                 formacao_academica: document.getElementById('formacaoAcademica').value,
+//                 formacao: document.getElementById('formacao').value,
+//                 falesobrevoce: document.getElementById('falesobrevoce').value,
+//                 onde_trabalhar: document.getElementById('ondeTrabalhar').value,
+//                 cargo: document.getElementById('cargo').value
+//             };
+
+//             // Enviando os dados para o servidor
+//             fetch('/entradadados_curriculo', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify(formData),
+//             })
+//             .then(response => {
+//                 if (!response.ok) {
+//                     throw new Error('Erro na requisição: ' + response.statusText);
+//                 }
+//                 return response.json();
+//             })
+//             .then(data => {
+//                 // Oculta o formulário
+//                 document.querySelector('.curriculoForm').style.display = 'none';
+
+//                 // Exibir mensagem de sucesso na página
+//                 const successMessage = document.getElementById('successMessage');
+//                 successMessage.style.display = 'block'; // Exibe a mensagem
+//                 successMessage.innerHTML = `<h2>${data.message || 'Você enviou o seu currículo com sucesso!'}</h2><p>Aguarde que nossa equipe irá analisar o seu currículo!</p>`;
+//             })
+//             .catch(error => {
+//                 alert('Ocorreu um erro: ' + error.message);
+//             });
+//         }
+//     });
+// });
+
+// function verificarCpfEAvancar(cpf) {
+//     // Verificando se o CPF já existe no banco de dados
+//     return fetch(`/verifica_cpf/${cpf}`)
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Erro ao verificar CPF: ' + response.statusText);
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             if (data.exists) {
+//                 // Pergunta ao usuário se ele quer substituir os dados
+//                 const confirmReplace = confirm('O CPF informado já existe. Deseja substituir os dados existentes?');
+//                 return confirmReplace; // Retorna true se o usuário confirmar
+//             }
+//             return true; // Avança se o CPF não existir
+//         })
+//         .catch(error => {
+//             alert('Ocorreu um erro: ' + error.message);
+//             return false; // Impede o avanço em caso de erro
+//         });
+// }
