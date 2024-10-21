@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template  
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 from datetime import datetime
 import psycopg2
@@ -35,7 +35,7 @@ def pesquisar_candidato():
     if query:
         base_query += " AND LOWER(nome) LIKE %s"
     if city:
-        base_query += " AND LOWER(cidade) = %s"
+        base_query += " AND LOWER(onde_trabalhar) = %s"
     if position:
         base_query += " AND LOWER(cargo) = %s"
     if chamar_entrevista:
@@ -150,6 +150,15 @@ def curriculo(id):
 @app.route('/entradacurriculo')
 def entradacurriculo():    
     return render_template('entrada_curriculo.html')
+
+@app.route('/entrevista')
+def pagina_entrevista():
+    return render_template('entrevista.html')
+
+@app.route('/home')
+def pagina_home():
+    return send_from_directory('..', 'home.html')
+
 
 #ROTA PARA BOTÃO CHAMAR ENTREVISTA
 @app.route('/curriculo/<int:id>/chama_entrevista', methods=['POST'])

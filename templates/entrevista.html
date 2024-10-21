@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista</title>
+    <link rel="stylesheet" href="../static/css/entrevista.css">
+    <link rel="icon" type="image/x-icon" href="img/novalino.png">
+</head>
+<body>
+    <div class="form-container">
+        <img src="../static/img/logo.png" alt="Logo da Empresa" class="logo">
+        <h1>Formulário de Entrevista</h1>
+        
+        <form id="form-entrevista" method="POST" novalidate>
+            <!-- Seleção de Cargo -->
+            <div class="input-group">
+                <label for="cargo">Selecione o setor para o qual deseja preencher o formulário:</label>
+                <select id="cargo" name="cargo" onchange="mostrarFormulario()" required>
+                    <option value="" disabled selected hidden>Selecione o cargo</option>
+                    <option value="Aux-Administrativo">Auxiliar Administrativo</option>
+                    <option value="Aux-CD">Auxiliar Centro de Distribuição</option>
+                    <option value="Crediarista">Crediário</option>
+                    <option value="Gerente-Loja">Gerente Loja</option>
+                    <option value="Gerente-Adm">Gerente Administrativo</option>
+                    <option value="Montador">Montador(a)</option>
+                    <option value="Vendedor">Vendedor(a)</option>
+
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="Filial">Selecione a filial que está fazendo a entrevista:</label>
+                <select id="Filial" name="Filial" required>
+                    <option value="" disabled selected hidden>Selecione a Filial</option>
+                    <option value="Centro-Adm">Centro Administrativo</option>
+                    <option value="FILIAL-1">Filial 1</option>
+                    <option value="FILIAL-2">Filial 2</option>
+                    <option value="FILIAL-3">Filial 3</option>
+                    <option value="FILIAL-4">Filial 4</option>
+                    <option value="FILIAL-5">Filial 5</option>
+                    <option value="FILIAL-6">Filial 6</option>
+                    <option value="FILIAL-7">Filial 7</option>
+                    <option value="FILIAL-8">Filial 8</option>
+                    <option value="FILIAL-9">Filial 9</option>
+                    <option value="FILIAL-10">Filial 10</option>
+                    <option value="FILIAL-11">Filial 11</option>
+                    <option value="FILIAL-12">Filial 12</option>
+                    <option value="FILIAL-13">Filial 13</option>
+                    <option value="FILIAL-14">Filial 14</option>
+                    <option value="FILIAL-15">Filial 15</option>
+                    <option value="FILIAL-16">Filial 16</option>
+                    <option value="FILIAL-17">Filial 17</option>
+                    <option value="FILIAL-18">Filial 18</option>
+                    <option value="FILIAL-19">Filial 19</option>
+                    <option value="FILIAL-20">Filial 20</option>
+                    <option value="FILIAL-21">Filial 21</option>
+                    <option value="FILIAL-22">Filial 22</option>
+                    <option value="FILIAL-23">Filial 23</option>
+                    <option value="FILIAL-24">Filial 24</option>
+                    <option value="FILIAL-26">Filial 26</option>
+                    <!-- Outras opções de filial -->
+                </select>
+            </div>
+
+            <!-- DADOS PESSOAIS -->
+            <div id="form-dadospessoais" class="dadospessoais">
+                <h2>DADOS PESSOAIS DO ENTREVISTADO(A)</h2>
+                <div class="input-group">
+                    <label for="nome_candidato">Nome Completo</label>
+                    <input type="text" id="nome_candidato" name="nome_candidato" required>
+                </div>
+                <div class="input-group">
+                    <label for="data_nascimento">Data de Nascimento</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" required>
+                </div>
+                <div class="input-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" required maxlength="14">
+                </div>
+                <div class="input-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div id="form-Vendedor" class="cargo-form" style="display: none;">
+                <br>
+                <h2>PERGUNTAS DO ÂMBITO PESSOAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                <div class="input-group">
+                    <label for="casa">1. Vive em casa própria ou alugada? Quem mora com você?</label>
+                    <textarea id="casa" name="casa" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="futuro">2. Quais são seus planos para o futuro? Onde e como você se vê em 5 anos?</label>
+                    <textarea id="futuro" name="futuro" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="importancia">3. Cite três coisas importantes em sua vida.</label>
+                    <textarea id="importancia" name="importancia" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="hobbies">4. O que você faz nas horas vagas? Quais seus hobbies?</label>
+                    <textarea id="hobbies" name="hobbies" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="atualizado">5. O que você faz para se manter atualizado?</label>
+                    <textarea id="atualizado" name="atualizado" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="residencia">6. Onde você residiu nos últimos 05 anos?</label>
+                    <textarea id="residencia" name="residencia" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="redes_sociais">7. Cite quais redes sociais utiliza (whatsapp, facebook, instagram, tiktok, linkedin) e se utiliza de 
+                        aplicativos bet e jogos de apostas como: betano,
+                        sportingbet, tigrinho, entre outros.</label>
+                    <textarea name="redes_sociais" id="redes_sociais"></textarea>
+                </div>
+                
+
+                <div class="input-group">
+                    <label for="ponto_forte">8. Qual é o seu ponto forte, segundo alguém próximo a você?</label>
+                    <textarea id="ponto_forte" name="ponto_forte" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="realizacao">9. O que considera sua maior realização até o momento?</label>
+                    <textarea id="realizacao" name="realizacao" required></textarea>
+                </div>
+                <br>
+
+                <h2>PERGUNTAS DO ÂMBITO PROFISSIONAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                <div class="input-group">
+                    <label for="desapontamento">10. Qual foi, até hoje, o seu maior desapontamento profissional?</label>
+                    <textarea id="desapontamento" name="desapontamento" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="experiencia">11. Quais foram suas experiências profissionais?</label>
+                    <textarea id="experiencia" name="experiencia" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="cursos">12. Possui cursos profissionalizantes? Se sim, cite os principais.</label>
+                    <textarea id="cursos" name="cursos"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="horas_extras">13. Possui disponibilidade para horários excepcionais caso necessário?</label>
+                    <select id="horas_extras" name="horas_extras" required>
+                        <option value="sim">Sim</option>
+                        <option value="não">Não</option>
+                    </select>
+                </div>
+    
+                <div class="input-group">
+                    <label for="informatica">14. Como você avalia seus conhecimentos em informática? Já trabalhou com algum software ou programa?</label>
+                    <textarea id="informatica" name="informatica" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="vendas">15. O que fez você querer trabalhar com vendas?</label>
+                    <textarea id="vendas" name="vendas" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="confianca_cliente">16. Como você constrói um relacionamento de confiança com um cliente?</label>
+                    <textarea id="confianca_cliente" name="confianca_cliente" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="estrategias_vendas">17. Nas vendas, quais estratégias você utilizaria para atingir um resultado positivo?</label>
+                    <textarea id="estrategias_vendas" name="estrategias_vendas" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="convencimento">18. Descreva uma situação que você precisou convencer alguém a ver as coisas do seu ponto de vista. O que você fez e quais foram os resultados?</label>
+                    <textarea id="convencimento" name="convencimento" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="redes_sociais2">19. Para você, qual a importância do uso das redes sociais no processo de vendas?</label>
+                    <textarea id="redes_sociais2" name="redes_sociais2" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="gerente_vendas">20. Para você, como um bom gerente deve conduzir uma equipe de vendas?</label>
+                    <textarea id="gerente_vendas" name="gerente_vendas" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="novalar">21. O que você sabe sobre a Novalar? Porque deseja ser contratado por nós?</label>
+                    <textarea id="novalar" name="novalar" required></textarea>
+                </div>
+                <br><br><br>
+
+                <H2>ÁREA PARA O GERENTE LOJA PREENCHER</H2>
+                <div class="input-group">
+                    <label for="obs">22. INSIRA AQUI AS OPINIÕES E OBSERVAÇÕES SOBRE O CANDIDATO A SEREM ENVIADAS.</label>
+                    <textarea id="obs" name="obs" class="textarea" required></textarea>
+                </div>
+                
+            </div>
+
+            <!-- editado pergunta redes socias-->
+            <div id="form-Gerente-Loja" class="cargo-form" style="display: none;">
+                <br>
+                    <h2>PERGUNTAS DO ÂMBITO PESSOAL PARA FAZER AO ENTREVISTADO(A)</h2>
+
+                    <div class="input-group">
+                        <label for="casa_gerente">1. Vive em casa própria ou alugada? Quem mora com você?</label>
+                        <textarea id="casa_gerente" name="casa_gerente" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="planos_gerente">2. Quais são seus planos para o futuro? Onde e como você se vê em 5 anos?</label>
+                        <textarea id="planos_gerente" name="planos_gerente" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="importancia_ger">3. Cite três coisas importantes em sua vida.</label>
+                        <textarea id="importancia_ger" name="importancia_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="hobbies_ger">4. O que você faz nas horas vagas? Quais seus hobbies?</label>
+                        <textarea id="hobbies_ger" name="hobbies_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="atualizacao">5. O que você faz para se manter atualizado?</label>
+                        <textarea id="atualizacao_ger" name="atualizacao_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="residencia_ger">6. Onde você residiu nos últimos 05 anos?</label>
+                        <textarea id="residencia_ger" name="residencia_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="redes_sociais_ger">7. Cite quais redes sociais utiliza (whatsapp, facebook, instagram, tiktok, linkedin) e se utiliza de 
+                            aplicativos bet e jogos de apostas como: betano,
+                            sportingbet, tigrinho, entre outros.</label>
+                        <textarea name="redes_sociais_ger" id="redes_sociais_ger"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ponto_forte">8. Qual é o seu ponto forte, segundo alguém próximo a você?</label>
+                        <textarea id="ponto_forte_ger" name="ponto_forte_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="realizacao">9. O que considera sua maior realização até o momento?</label>
+                        <textarea id="realizacao_ger" name="realizacao_ger" required></textarea>
+                    </div><br>
+                    <h2>PERGUNTAS DO ÂMBITO PROFISSIONAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                    <div class="input-group">
+                        <label for="desapontamento">10. Qual foi, até hoje, o seu maior desapontamento profissional?</label>
+                        <textarea id="desapontamento_ger" name="desapontamento_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="cursos">11. Possui cursos profissionalizantes? Se sim, cite os principais.</label>
+                        <textarea id="cursos_ger" name="cursos_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="horas_extras">12. Possui disponibilidade para horários excepcionais caso necessário?</label>
+                        <select id="horas_extras_ger" name="horas_extras_ger" required>
+                            <option value="sim">Sim</option>
+                            <option value="não">Não</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="informatica">13. Como você avalia seus conhecimentos em informática? Já trabalhou com algum software ou programa?</label>
+                        <textarea id="informatica_ger" name="informatica_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="tempo_trabalho">14. Como você divide seu tempo de trabalho e tempo pessoal?</label>
+                        <textarea id="tempo_trabalho_ger" name="tempo_trabalho_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="motivo_trabalho">15. O que fez você querer trabalhar como gerente de uma loja de móveis e eletrodomésticos?</label>
+                        <textarea id="motivo_trabalho_ger" name="motivo_trabalho_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="relacionamento_cliente">16. Para você, porque é importante criar um relacionamento de confiança com um cliente?</label>
+                        <textarea id="relacionamento_cliente_ger" name="relacionamento_cliente_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="gestao_equipe">17. Durante sua gestão de equipe, quais estratégias você utilizaria para atingir um resultado positivo?</label>
+                        <textarea id="gestao_equipe_ger" name="gestao_equipe_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="convencer">18. Descreva uma situação que você precisou convencer alguém a ver as coisas do seu ponto de vista. O que você fez e quais foram os resultados?</label>
+                        <textarea id="convencer_ger" name="convencer_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="redes_vendas">19. Para você, qual a importância do uso das redes sociais no processo de vendas?</label>
+                        <textarea id="redes_vendas_ger" name="redes_vendas_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="caracteristicas_vendedor">20. Para você, quais são as melhores características de um vendedor para estar em sua equipe de vendas?</label>
+                        <textarea id="caracteristicas_vendedor_ger" name="caracteristicas_vendedor_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="mudanca">21. Possui disponibilidade de mudança temporária e definitiva de cidade?</label>
+                        <textarea id="mudanca_ger" name="mudanca_ger" required></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="novalar">22. O que você sabe sobre a Novalar? Porque deseja ser contratado por nós?</label>
+                        <textarea id="novalar_ger" name="novalar_ger" required></textarea>
+                    </div>
+
+                    <H2>ÁREA PARA O GERENTE LOJA PREENCHER</H2>
+                    <div class="input-group">
+                        <label for="obs">23. INSIRA AQUI AS OPINIÕES E OBSERVAÇÕES SOBRE O CANDIDATO A SEREM ENVIADAS.</label>
+                        <textarea id="obs_ger" name="obs_ger" class="textarea" required></textarea>
+                    </div>
+
+                    
+            </div>
+            
+            <!-- editado pergunta redes socias-->
+            <div id="form-Crediarista" class="cargo-form" style="display: none;">
+                <br>
+                <h2>PERGUNTAS DO ÂMBITO PESSOAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                <div class="input-group">
+                    <label for="casa_cred">1. Vive em casa própria ou alugada? Quem mora com você?</label>
+                    <textarea id="casa_cred" name="casa_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="planos_cred">2. Quais são seus planos para o futuro? Onde e como você se vê em 5 anos?</label>
+                    <textarea id="planos_cred" name="planos_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="importancia_cred">3. Cite três coisas importantes em sua vida.</label>
+                    <textarea id="importancia_cred" name="importancia_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="hobbies_cred">4. O que você faz nas horas vagas? Quais seus hobbies?</label>
+                    <textarea id="hobbies_cred" name="hobbies_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="atualizacao_cred">5. O que você faz para se manter atualizado?</label>
+                    <textarea id="atualizacao_cred" name="atualizacao_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="residencia_cred">6. Onde você residiu nos últimos 05 anos?</label>
+                    <textarea id="residencia_cred" name="residencia_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="redes_sociais_cred">7. Cite quais redes sociais utiliza (whatsapp, facebook, instagram, tiktok, linkedin) e se utiliza de 
+                        aplicativos bet e jogos de apostas como: betano,
+                        sportingbet, tigrinho, entre outros.</label>
+                    <textarea name="redes_sociais_cred" id="redes_sociais_cred"></textarea>
+                </div>
+                <br><br>
+            
+                <div class="input-group">
+                    <label for="ponto_forte_cred">8. Qual é o seu ponto forte, segundo alguém próximo a você?</label>
+                    <textarea id="ponto_forte_cred" name="ponto_forte_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="realizacao_cred">9. O que considera sua maior realização até o momento?</label>
+                    <textarea id="realizacao_cred" name="realizacao_cred" required></textarea>
+                </div>
+            
+                <h2>PERGUNTAS DO ÂMBITO PROFISSIONAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                <div class="input-group">
+                    <label for="desapontamento_cred">10. Qual foi, até hoje, o seu maior desapontamento profissional?</label>
+                    <textarea id="desapontamento_cred" name="desapontamento_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="cursos_cred">11. Possui cursos profissionalizantes? Se sim, cite os principais.</label>
+                    <textarea id="cursos_cred" name="cursos_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="horas_extras_cred">12. Possui disponibilidade para horários excepcionais caso necessário?</label>
+                    <select id="horas_extras_cred" name="horas_extras_cred" required>
+                        <option value="sim">Sim</option>
+                        <option value="não">Não</option>
+                    </select>
+                </div>
+            
+                <div class="input-group">
+                    <label for="informatica_cred">13. Como você avalia seus conhecimentos em informática? Já trabalhou com algum software ou programa?</label>
+                    <textarea id="informatica_cred" name="informatica_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="tempo_trabalho_cred">14. Como você divide seu tempo de trabalho e tempo pessoal?</label>
+                    <textarea id="tempo_trabalho_cred" name="tempo_trabalho_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="motivo_trabalho_cred">15. O que fez você querer trabalhar como crediarista na Novalar?</label>
+                    <textarea id="motivo_trabalho_cred" name="motivo_trabalho_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="relacionamento_equipe_cred">16. Para você, porque é importante criar um relacionamento de confiança a equipe e outros setores?</label>
+                    <textarea id="relacionamento_equipe_cred" name="relacionamento_equipe_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="estrategias_cred">17. Durante sua gestão de equipe, quais estratégias você utilizaria para atingir um resultado positivo?</label>
+                    <textarea id="estrategias_cred" name="estrategias_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="profissional_administrativo_cred">18. Para você, quais são as melhores características de um profissional administrativo para estar em sua equipe?</label>
+                    <textarea id="profissional_administrativo_cred" name="profissional_administrativo_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="convencer_cred">19. Descreva uma situação que você precisou convencer alguém a ver as coisas do seu ponto de vista. O que você fez e quais foram os resultados?</label>
+                    <textarea id="convencer_cred" name="convencer_cred" required></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <label for="novalar_cred">20. O que você sabe sobre a Novalar? Porque deseja ser contratado por nós?</label>
+                    <textarea id="novalar_cred" name="novalar_cred" required></textarea>
+                </div>
+                <br><br>
+            
+                <h2>ÁREA PARA O GERENTE LOJA PREENCHER</h2>
+                <div class="input-group">
+                    <label for="obs_cred">21. INSIRA AQUI AS OBSERVAÇÕES SOBRE O CANDIDATO A SER ENVIADAS PARA O GERENTE REGIONAL</label>
+                    <textarea id="obs_cred" name="obs_cred" class="textarea" required></textarea>
+                </div>
+            </div>
+            
+            <!-- editado pergunta redes socias-->
+            <div id="form-Montador" class="cargo-form" style="display: none;"> 
+                <br>
+                <h2>PERGUNTAS DO ÂMBITO PESSOAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                
+                <div class="input-group">
+                    <label for="moradia_mont">1. Vive em casa própria ou alugada? Quem mora com você?</label>
+                    <textarea id="moradia_mont" name="moradia_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="planos_futuros_mont">2. Quais são seus planos para o futuro? Onde e como você se vê em 5 anos?</label>
+                    <textarea id="planos_futuros_mont" name="planos_futuros_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="coisas_importantes_mont">3. Cite três coisas importantes em sua vida.</label>
+                    <textarea id="coisas_importantes_mont" name="coisas_importantes_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hobbies_mont">4. O que você faz nas horas vagas? Quais seus hobbies?</label>
+                    <textarea id="hobbies_mont" name="hobbies_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="atualizacao_mont">5. O que você faz para se manter atualizado?</label>
+                    <textarea id="atualizacao_mont" name="atualizacao_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="residencia_mont">6. Onde você residiu nos últimos 05 anos?</label>
+                    <textarea id="residencia_mont" name="residencia_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="redes_sociais_mont">7. Cite quais redes sociais utiliza (whatsapp, facebook, instagram, tiktok, linkedin) e se utiliza de 
+                        aplicativos bet e jogos de apostas como: betano,
+                        sportingbet, tigrinho, entre outros.</label>
+                    <textarea name="redes_sociais_mont" id="redes_sociais_mont"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="ponto_forte_mont">8. Qual é o seu ponto forte, segundo alguém próximo a você?</label>
+                    <textarea id="ponto_forte_mont" name="ponto_forte_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="realizacao_mont">9. O que considera sua maior realização até o momento?</label>
+                    <textarea id="realizacao_mont" name="realizacao_mont" required></textarea>
+                </div>
+                
+                <h2>PERGUNTAS DO ÂMBITO PROFISSIONAL PARA FAZER AO CANDIDATO(A)</h2>
+                
+                <div class="input-group">
+                    <label for="cursos_mont">10. Possui cursos profissionalizantes? Se sim, cite os principais.</label>
+                    <textarea id="cursos_mont" name="cursos_mont" required></textarea>
+                </div>
+                
+                
+                <div class="input-group">
+                    <label for="horas_extras_mont">11. Possui disponibilidade para horários excepcionais caso necessário?</label>
+                    <select id="horas_extras_mont" name="horas_extras_mont" required>
+                        <option value="sim">Sim</option>
+                        <option value="não">Não</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="veiculo_mont">12. Possui Veículo próprio?</label>
+                    <select id="veiculo_mont" name="veiculo_mont" required>
+                        <option value="Carro">Carro</option>
+                        <option value="Moto">Moto</option>
+                        <option value="Bicicleta">Bicicleta</option>
+                        <option value="NÃO-POSSUI">NÃO POSSUI</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="caracteristicas_montador_mont">13. Para você, quais são as características principais para um montador de móveis?</label>
+                    <textarea id="caracteristicas_montador_mont" name="caracteristicas_montador_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="experiencia_montagem_mont">14. Você já trabalhou anteriormente como Montador de Móveis?</label>
+                    <textarea id="experiencia_montagem_mont" name="experiencia_montagem_mont" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="novalar_mont">15. O que você sabe sobre a Novalar? Porque deseja ser contratado por nós?</label>
+                    <textarea id="novalar_mont" name="novalar_mont" required></textarea>
+                </div>
+                
+                <h2>ÁREA PARA O GERENTE LOJA PREENCHER</h2>
+                
+                <div class="input-group">
+                    <label for="obs_mont">16. INSIRA AQUI AS OBSERVAÇÕES SOBRE O CANDIDATO A SER ENVIADAS PARA O GERENTE REGIONAL</label>
+                    <textarea id="obs_mont" name="obs_mont" class="textarea" required></textarea>
+                </div>
+            </div>
+            
+            <!-- editado pergunta redes socias-->
+            <div id="form-Aux-Administrativo" class="cargo-form" style="display: none;">
+                <br>
+                <h2>PERGUNTAS DO ÂMBITO PESSOAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                <div class="input-group">
+                    <label for="moradia_auxadm">1. Vive em casa própria ou alugada? Quem mora com você?</label>
+                    <textarea id="moradia_auxadm" name="moradia_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="futuro_auxadm">2. Quais são seus planos para o futuro? Onde e como você se vê em 5 anos?</label>
+                    <textarea id="futuro_auxadm" name="futuro_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="importantes_auxadm">3. Cite três coisas importantes em sua vida.</label>
+                    <textarea id="importantes_auxadm" name="importantes_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hobbies_auxadm">4. O que você faz nas horas vagas? Quais seus hobbies?</label>
+                    <textarea id="hobbies_auxadm" name="hobbies_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="atualizacao_auxadm">5. O que você faz para se manter atualizado?</label>
+                    <textarea id="atualizacao_auxadm" name="atualizacao_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="residencia_auxadm">6. Onde você residiu nos últimos 05 anos?</label>
+                    <textarea id="residencia_auxadm" name="residencia_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="redes_sociais_auxadm">7. Cite quais redes sociais utiliza (whatsapp, facebook, instagram, tiktok, linkedin) e se utiliza de 
+                        aplicativos bet e jogos de apostas como: betano,
+                        sportingbet, tigrinho, entre outros.</label>
+                    <textarea name="redes_sociais_auxadm" id="redes_sociais_auxadm"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="ponto_forte_auxadm">8. Qual é o seu ponto forte, segundo alguém próximo a você?</label>
+                    <textarea id="ponto_forte_auxadm" name="ponto_forte_auxadm" required></textarea>
+                </div>
+                
+                <h2>PERGUNTAS DO ÂMBITO PROFISSIONAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                
+                <div class="input-group">
+                    <label for="cursos_auxadm">9. Possui cursos profissionalizantes? Se sim, cite os principais.</label>
+                    <textarea id="cursos_auxadm" name="cursos_auxadm" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="horas_extras_auxadm">10. Possui disponibilidade para horários excepcionais caso necessário?</label>
+                    <select id="horas_extras_auxadm" name="horas_extras_auxadm" required>
+                        <option value="sim">Sim</option>
+                        <option value="não">Não</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="software_auxadm">11. Você já trabalhou com algum Software ou Programa?</label>
+                    <textarea id="software_auxadm" name="software_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="office_auxadm">12. Como você considera seus conhecimentos com Word, Excel, PowerPoint?</label>
+                    <textarea id="office_auxadm" name="office_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="relacionamento_auxadm">13. Você se considera uma pessoa bem relacionada? O que você pode fazer hoje para melhorar ainda mais a sua convivência coletiva?</label>
+                    <textarea id="relacionamento_auxadm" name="relacionamento_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="habilidades_auxadm">14. Quais habilidades você acredita serem mais importantes para esse cargo? Por quê?</label>
+                    <textarea id="habilidades_auxadm" name="habilidades_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="discricao_auxadm">15. Descreva uma situação em que foi necessária discrição em sua função e como você lidou com isso?</label>
+                    <textarea id="discricao_auxadm" name="discricao_auxadm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="novalar_auxadm">16. O que você sabe sobre a Novalar? Porque deseja ser contratado por nós?</label>
+                    <textarea id="novalar_auxadm" name="novalar_auxadm" required></textarea>
+                </div>
+                
+                <h2>ÁREA PARA O GESTOR PREENCHER</h2>
+                
+                <div class="input-group">
+                    <label for="obs_auxadm">17. INSIRA AQUI AS OBSERVAÇÕES SOBRE O CANDIDATO A SER ENVIADAS PARA O GERENTE REGIONAL</label>
+                    <textarea id="obs_auxadm" name="obs_auxadm" class="textarea" required></textarea>
+                </div>
+            </div>
+
+            <!-- editado pergunta redes socias-->
+            <div id="form-Gerente-Adm" class="cargo-form" style="display: none;">
+                <br>
+                <h2>PERGUNTAS DO ÂMBITO PESSOAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                <div class="input-group">
+                    <label for="moradia_geradm">1. Vive em casa própria ou alugada? Quem mora com você?</label>
+                    <textarea id="moradia_geradm" name="moradia_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="planos_futuro_geradm">2. Quais são seus planos para o futuro? Onde e como você se vê em 5 anos?</label>
+                    <textarea id="planos_futuro_geradm" name="planos_futuro_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="coisas_importantes_geradm">3. Cite três coisas importantes em sua vida.</label>
+                    <textarea id="coisas_importantes_geradm" name="coisas_importantes_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hobbies_geradm">4. O que você faz nas horas vagas? Quais seus hobbies?</label>
+                    <textarea id="hobbies_geradm" name="hobbies_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="atualizacao_geradm">5. O que você faz para se manter atualizado?</label>
+                    <textarea id="atualizacao_geradm" name="atualizacao_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="residencia_geradm">6. Onde você residiu nos últimos 05 anos?</label>
+                    <textarea id="residencia_geradm" name="residencia_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="redes_sociais_geradm">7. Cite quais redes sociais utiliza (whatsapp, facebook, instagram, tiktok, linkedin) e se utiliza de 
+                        aplicativos bet e jogos de apostas como: betano,
+                        sportingbet, tigrinho, entre outros.</label>
+                    <textarea name="redes_sociais_geradm" id="redes_sociais_geradm"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="ponto_forte_geradm">8. Qual é o seu ponto forte, segundo alguém próximo a você?</label>
+                    <textarea id="ponto_forte_geradm" name="ponto_forte_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="maior_realizacao_geradm">9. O que considera sua maior realização até o momento?</label>
+                    <textarea id="maior_realizacao_geradm" name="maior_realizacao_geradm" required></textarea>
+                </div>
+                
+                <h2>PERGUNTAS DO ÂMBITO PROFISSIONAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                
+                <div class="input-group">
+                    <label for="desapontamento_geradm">10. Qual foi, até hoje, o seu maior desapontamento profissional?</label>
+                    <textarea id="desapontamento_geradm" name="desapontamento_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="cursos_geradm">11. Possui cursos profissionalizantes? Se sim, cite os principais.</label>
+                    <textarea id="cursos_geradm" name="cursos_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="horas_extras_geradm">12. Possui disponibilidade para horários excepcionais caso necessário?</label>
+                    <select id="horas_extras_geradm" name="horas_extras_geradm" required>
+                        <option value="sim">Sim</option>
+                        <option value="não">Não</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="informacao_geradm">13. Como você avalia seus conhecimentos em informática? Já trabalhou com algum software ou programa?</label>
+                    <textarea id="informacao_geradm" name="informacao_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="tempo_geradm">14. Como você divide seu tempo de trabalho e tempo pessoal?</label>
+                    <textarea id="tempo_geradm" name="tempo_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="motivo_gerente_geradm">15. O que fez você querer trabalhar como Gerente na Novalar?</label>
+                    <textarea id="motivo_gerente_geradm" name="motivo_gerente_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="relacionamento_geradm">16. Para você, porque é importante criar um relacionamento de confiança com a equipe e outros setores?</label>
+                    <textarea id="relacionamento_geradm" name="relacionamento_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="estrategias_geradm">17. Durante sua gestão de equipe, quais estratégias você utilizaria para atingir um resultado positivo?</label>
+                    <textarea id="estrategias_geradm" name="estrategias_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="caracteristicas_administrativo_geradm">18. Para você, quais são as melhores características de um profissional administrativo para estar em sua equipe?</label>
+                    <textarea id="caracteristicas_administrativo_geradm" name="caracteristicas_administrativo_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="convencao_geradm">19. Descreva uma situação que você precisou convencer alguém a ver as coisas do seu ponto de vista. O que você fez e quais foram os resultados?</label>
+                    <textarea id="convencao_geradm" name="convencao_geradm" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="novalar_geradm">20. O que você sabe sobre a Novalar? Porque deseja ser contratado por nós?</label>
+                    <textarea id="novalar_geradm" name="novalar_geradm" required></textarea>
+                </div>
+                
+                <h2>ÁREA PARA O GESTOR PREENCHER</h2>
+                <div class="input-group">
+                    <label for="obs_geradm">21. INSIRA AQUI AS OBSERVAÇÕES SOBRE O CANDIDATO A SER ENVIADAS PARA O GERENTE REGIONAL</label>
+                    <textarea id="obs_geradm" name="obs_geradm" class="textarea" required></textarea>
+                </div>
+            </div>
+            
+            <!-- editado pergunta redes socias-->
+            <div id="form-Aux-CD" class="cargo-form" style="display: none;">
+                <br>
+                <h2>PERGUNTAS DO ÂMBITO PESSOAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                <div class="input-group">
+                    <label for="residencia_auxcd">1. Vive em casa própria ou alugada? Quem mora com você?</label>
+                    <textarea id="residencia_auxcd" name="residencia_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="planos_futuro_auxcd">2. Quais são seus planos para o futuro? Onde e como você se vê em 5 anos?</label>
+                    <textarea id="planos_futuro_auxcd" name="planos_futuro_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="coisas_importantes_auxcd">3. Cite três coisas importantes em sua vida.</label>
+                    <textarea id="coisas_importantes_auxcd" name="coisas_importantes_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="horas_vagas_auxcd">4. O que você faz nas horas vagas? Quais seus hobbies?</label>
+                    <textarea id="horas_vagas_auxcd" name="horas_vagas_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="atualizacao_auxcd">5. O que você faz para se manter atualizado?</label>
+                    <textarea id="atualizacao_auxcd" name="atualizacao_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="residencias_ultimos_5_anos_auxcd">6. Onde você residiu nos últimos 05 anos?</label>
+                    <textarea id="residencias_ultimos_5_anos_auxcd" name="residencias_ultimos_5_anos_auxcd" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="redes_sociais_auxcd">7. Cite quais redes sociais utiliza (whatsapp, facebook, instagram, tiktok, linkedin) e se utiliza de 
+                        aplicativos bet e jogos de apostas como: betano,
+                        sportingbet, tigrinho, entre outros.</label>
+                    <textarea name="redes_sociais_auxcd" id="redes_sociais_auxcd"></textarea>
+                </div>
+                
+                <br><br>
+                
+                <div class="input-group">
+                    <label for="ponto_forte_auxcd">8. Qual é o seu ponto forte, segundo alguém próximo a você?</label>
+                    <textarea id="ponto_forte_auxcd" name="ponto_forte_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="maior_realizacao_auxcd">9. O que considera sua maior realização até o momento?</label>
+                    <textarea id="maior_realizacao_auxcd" name="maior_realizacao_auxcd" required></textarea>
+                </div>
+                <br>
+                <h2>PERGUNTAS DO ÂMBITO PROFISSIONAL PARA FAZER AO ENTREVISTADO(A)</h2>
+                
+                <div class="input-group">
+                    <label for="cursos_profissionalizantes_auxcd">10. Possui cursos profissionalizantes? Se sim, cite os principais.</label>
+                    <textarea id="cursos_profissionalizantes_auxcd" name="cursos_profissionalizantes_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="horas_extras_auxcd">11. Possui disponibilidade para horas ex caso necessário?</label>
+                    <textarea id="horas_extras_auxcd" name="horas_extras_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="caracteristicas_ajudante_auxcd">12. Para você, quais são as características principais para um Ajudante de Depósito?</label>
+                    <textarea id="caracteristicas_ajudante_auxcd" name="caracteristicas_ajudante_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="experiencia_deposito_auxcd">13. Você já trabalhou anteriormente com carga e descarga ou em Depósitos?</label>
+                    <textarea id="experiencia_deposito_auxcd" name="experiencia_deposito_auxcd" required></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="conhece_novalar_auxcd">14. O que você sabe sobre a Novalar? Porque deseja ser contratado por nós?</label>
+                    <textarea id="conhece_novalar_auxcd" name="conhece_novalar_auxcd" required></textarea>
+                </div>
+                
+                <H2>ÁREA PARA O GESTOR PREENCHER</H2>
+                <div class="input-group">
+                    <label for="obs_auxcd">15. INSIRA AQUI AS OBSERVAÇÕES SOBRE O CANDIDATO A SER ENVIADAS PARA O GERENTE REGIONAL</label>
+                    <textarea id="obs_auxcd" name="obs_auxcd" class="textarea" required></textarea>
+                </div>
+            </div>
+            
+
+            <!-- Botão para enviar -->
+            <button type="submit">Enviar Formulário</button>
+        </form>
+        <div id="mensagemRetorno" style="display: none;"></div>
+        <div id="loadingBar" style="display: none;">Carregando...</div>
+
+
+        
+        <footer class="copy" style="display: block;">
+            <p>&copy; 2024 Desenvolvido por David Conrado. <br>Todos os direitos reservados para NOVALAR S/A.</p>
+        </footer>
+        
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/entrevista.js') }}"></script>
+</body>
+</html>
