@@ -146,7 +146,7 @@ def curriculo(id):
         return "Currículo não encontrado", 404
 
 
-#RODAR PAGINA DE ENVIAR CURRICULO ENTRADA DOS DADOS
+#RODAR PAGINAS
 @app.route('/entradacurriculo')
 def entradacurriculo():    
     return render_template('entrada_curriculo.html')
