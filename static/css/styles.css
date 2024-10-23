@@ -181,3 +181,84 @@ nav {
 #filterButton:active {
     transform: scale(0.98);
 }
+
+
+/* Estilos gerais para dispositivos móveis */
+@media (max-width: 768px) {
+    /* Ajustes no corpo */
+    body {
+        font-size: 14px; /* Reduzir o tamanho da fonte */
+    }
+
+    /* Ajustes no cabeçalho */
+    header {
+        padding: 15px;
+        font-size: 18px; /* Ajustar tamanho do texto */
+    }
+
+    /* Estilo das abas */
+    nav {
+        flex-direction: column; /* Alinha abas em coluna */
+    }
+
+    .tab-list {
+        flex-direction: column; /* Coloca as abas em coluna */
+    }
+
+    .tab-item {
+        padding: 10px 15px; /* Reduzir espaçamento */
+        width: 100%; /* Botões ocupam 100% da largura */
+        text-align: center; /* Centraliza texto */
+    }
+
+    /* Conteúdo das abas */
+    .tab-content {
+        padding: 15px; /* Reduzir padding */
+    }
+
+    /* Contêiner de pesquisa */
+    .search-container {
+        flex-direction: column; /* Alinha itens em coluna */
+        align-items: stretch; /* Estica itens para ocupar a largura */
+    }
+
+    #searchInput {
+        width: 100%; /* Ocupa 100% da largura disponível */
+        margin-bottom: 10px; /* Espaçamento abaixo do campo de busca */
+    }
+
+    /* Filtros */
+    .filter-container {
+        flex-direction: column; /* Alinha filtros em coluna */
+    }
+
+    .filter-container label,
+    .filter-container select {
+        width: 100%; /* Filtros ocupam 100% da largura */
+        margin-bottom: 10px; /* Espaçamento entre filtros */
+    }
+
+    /* Botões */
+    #searchButton, #filterButton {
+        width: 100%; /* Botões ocupam 100% da largura */
+    }
+}
+
+/* Ajustes para telas menores que 480px */
+@media (max-width: 480px) {
+    header {
+        font-size: 16px; /* Reduzir ainda mais o tamanho da fonte */
+    }
+
+    #searchInput {
+        font-size: 14px; /* Ajustar tamanho da fonte */
+    }
+
+    #searchButton, #filterButton {
+        font-size: 14px; /* Ajustar tamanho da fonte */
+    }
+
+    .result-item, .resultado-item {
+        padding: 10px; /* Reduzir padding */
+    }
+}
