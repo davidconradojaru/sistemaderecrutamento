@@ -37,7 +37,7 @@ function exibirEntrevistas(data) {
                 <p><strong>Cargo Desejado:</strong> ${item.cargo}</p>
                 <p><strong>Data de Inclusão:</strong> ${item.created_at}</p>
             `;
-             // Criação do botão para agendar entrevista
+            // Criação do botão para agendar entrevista
             const button = document.createElement("button");
             button.textContent = "Fazer Entrevista";
             button.onclick = () => {
