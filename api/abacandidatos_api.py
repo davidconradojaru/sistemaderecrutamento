@@ -292,7 +292,7 @@ def enviar_curriculo():
         conn.close()
 
 
-
+#INSERIR DADOS DA EMTREVISTA VERIFICAR TABELA 
 @app.route('/insert_entrevista', methods=['POST'])
 def adicionar_entrevista():
     dados = request.json
