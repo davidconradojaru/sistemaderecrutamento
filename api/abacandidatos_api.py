@@ -293,5 +293,31 @@ def enviar_curriculo():
 
 
 
+@app.route('/insert_entrevista', methods=['POST'])
+def adicionar_entrevista():
+    dados = request.json
+    conn = get_database_connection()
+    cursor = conn.cursor()
+
+    # Verifica se o id do currículo existe
+    cursor.execute('SELECT * FROM curriculo WHERE id = %s;', (dados['id'],))
+    if cursor.rowcount == 0:
+        return jsonify({'status': 'error', 'message': 'Currículo não encontrado.'}), 404
+
+    # Inserindo os dados da entrevista
+    cursor.execute('''
+        INSERT INTO entrevistas (id, cargo, filial, nome_candidato, data_nascimento, cpf, telefone, email)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s);
+    ''', (dados['id'], dados['cargo'], dados['Filial'], dados['nome_candidato'], 
+        dados['data_nascimento'], dados['cpf'], dados['telefone'], dados['email']))
+    
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return jsonify({'status': 'success', 'id': dados['id']}), 201
+
+
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

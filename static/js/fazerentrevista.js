@@ -53,3 +53,62 @@ function exibirEntrevistas(data) {
     }
 }
 
+
+//DAQUI INSERÇÃO DE DADOS DA PAGINA ENTREVISTA
+// Função para validar e coletar os dados pessoais
+function validarDadosPessoais() {
+    // Coletando os valores dos campos
+    const nome = document.getElementById('nome_candidato').value.trim();
+    const dataNascimento = document.getElementById('data_nascimento').value;
+    const cpf = document.getElementById('cpf').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    // Validando os campos
+    if (!nome || !dataNascimento || !cpf || !telefone || !email) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+    }
+
+    // Exemplo de validação simples para CPF (ajuste conforme necessário)
+    const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    if (!cpfRegex.test(cpf)) {
+        alert('Por favor, insira um CPF válido no formato XXX.XXX.XXX-XX.');
+        return;
+    }
+
+    // Aqui você pode fazer o envio dos dados
+    enviarDados({
+        nome,
+        data_nascimento: dataNascimento,
+        cpf,
+        telefone,
+        email,
+    });
+}
+
+// Função para enviar os dados para o servidor
+function enviarDados(dados) {
+    fetch('http://127.0.0.1:5000/insert_entrevista', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao enviar os dados.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Dados enviados com sucesso!');
+        // Aqui você pode redirecionar ou limpar o formulário
+    })
+    .catch(error => {
+        alert(error.message);
+    });
+}
+
+document.getElementById('botaoEnviar').addEventListener('click', validarDadosPessoais);
