@@ -87,28 +87,28 @@ function validarDadosPessoais() {
     });
 }
 
-// Função para enviar os dados para o servidor
-function enviarDados(dados) {
-    fetch('http://127.0.0.1:5000/insert_entrevista', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dados),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro ao enviar os dados.');
-        }
-        return response.json();
-    })
-    .then(data => {
-        alert('Dados enviados com sucesso!');
-        // Aqui você pode redirecionar ou limpar o formulário
-    })
-    .catch(error => {
-        alert(error.message);
-    });
-}
+// // Função para enviar os dados para o servidor
+// function enviarDados(dados) {
+//     fetch('http://127.0.0.1:5000/insert_entrevista', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(dados),
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error('Erro ao enviar os dados.');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         alert('Dados enviados com sucesso!');
+//         // Aqui você pode redirecionar ou limpar o formulário
+//     })
+//     .catch(error => {
+//         alert(error.message);
+//     });
+// }
 
-document.getElementById('botaoEnviar').addEventListener('click', validarDadosPessoais);
+// document.getElementById('botaoEnviar').addEventListener('click', validarDadosPessoais);
