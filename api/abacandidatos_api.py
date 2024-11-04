@@ -230,6 +230,76 @@ def status_entrevista(id):
         conn.close()
         
 
+#INSERINDO DADOS DE ENTREVISTA
+# INSERINDO DADOS DE ENTREVISTA
+@app.route('/insert_entrevista', methods=['POST'])
+def insert_entrevista():
+    data = request.json
+    
+    # Conexão com o banco de dados
+    conn = get_database_connection()
+    cursor = conn.cursor()
+    
+    try:
+        # Insert na tabela entrevistas
+        cursor.execute(""" 
+            INSERT INTO noval.entrevistas (cargo, filial, nome_candidato, data_nascimento, cpf, telefone, email, id)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            RETURNING id;  -- Retorna o ID da nova entrevista
+        """, (
+            data['cargo'], 
+            data['Filial'], 
+            data['nome'], 
+            data['data_nascimento'], 
+            data['cpf'], 
+            data['telefone'], 
+            data['email'],
+            data['id_candidato']  # Adicionando o ID do candidato
+        ))
+
+        # Captura o ID da nova entrevista
+        entrevista_id = cursor.fetchone()[0]
+
+        # Inserir na tabela entrevista_montador
+        cursor.execute(""" 
+            INSERT INTO noval.entrevista_montador (entrevista_id, moradia, planos_futuros, coisas_importantes, hobbies,
+                atualizacao, residencia, redes_sociais, ponto_forte, realizacao, cursos, horas_extras,
+                veiculo, caracteristicas, experiencia, novalar, obs)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """, (
+            entrevista_id,  # Use o ID capturado aqui
+            data['moradia'], 
+            data['planos_futuros'], 
+            data['coisas_importantes'],
+            data['hobbies'], 
+            data['atualizacao'], 
+            data['residencia'], 
+            data['redes_sociais'],
+            data['ponto_forte'], 
+            data['realizacao'], 
+            data['cursos'], 
+            data['horas_extras'],
+            data['veiculo'], 
+            data['caracteristicas'], 
+            data['experiencia'], 
+            data['novalar'],
+            data['obs']
+        ))
+
+        # Commit das alterações
+        conn.commit()
+
+        return jsonify({'message': 'Entrevista salva com sucesso!', 'entrevista_id': entrevista_id}), 201
+
+    except Exception as e:
+        conn.rollback()
+        print(f"Erro ao inserir entrevista: {e}")  # Mensagem de erro mais específica
+        return jsonify({'error': 'Ocorreu um erro ao salvar a entrevista: ' + str(e)}), 500
+
+    finally:
+        # Fecha o cursor e a conexão
+        cursor.close()
+        conn.close()
 
 
 

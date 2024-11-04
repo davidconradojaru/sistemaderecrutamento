@@ -4,10 +4,10 @@ body {
     margin: 0;
     background: linear-gradient(45deg, #e1d019, #000000, #6bc6f4, #063d8f);
     background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    /* animation: gradientAnimation 15s ease infinite; */
 }
 
-@keyframes gradientAnimation {
+/* @keyframes gradientAnimation {
     0% {
         background-position: 0% 50%;
     }
@@ -17,7 +17,7 @@ body {
     100% {
         background-position: 0% 50%;
     }
-}
+} */
 .logo {
     display: block;
     margin: 0 auto;
