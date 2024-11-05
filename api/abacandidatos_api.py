@@ -102,7 +102,7 @@ def pesquisar_candidato():
     return jsonify(candidatos)
 
 
-
+#pagina ver
 @app.route('/curriculo/<int:id>')
 def curriculo(id):
     conn = get_database_connection()
@@ -184,11 +184,11 @@ def alterar_entrevista(id):
 @app.route('/entrevistas', methods=['GET'])
 def listar_entrevistas():    
 
-#VERIRIFICA CPF EXISTENTE NA ENTRADA E PERGUNTA AO USUARIO
+
     conn = get_database_connection()
     cursor = conn.cursor()
     
-    cursor.execute("SELECT * FROM noval.curriculo WHERE chamar_entrevista = TRUE")
+    cursor.execute("SELECT * FROM noval.curriculo c JOIN noval.entrevistas e ON c.id = e.id WHERE c.chamar_entrevista = TRUE AND e.entrevista_efetuada = FALSE")
     rows = cursor.fetchall()
     cursor.close()
     conn.close()
