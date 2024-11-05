@@ -228,7 +228,67 @@ def status_entrevista(id):
     finally:
         cursor.close()
         conn.close()
-        
+
+@app.route('/entradadados_curriculo', methods=['POST'])
+def enviar_curriculo():
+    data = request.json
+
+    # Extraindo dados do JSON recebido
+    nome = data.get('nome')
+    data_nascimento = data.get('data_nascimento')
+    cpf = data.get('cpf')
+    telefone = data.get('telefone')
+    email = data.get('email')
+    estado_civil = data.get('estado_civil')
+    genero = data.get('genero')
+    nacionalidade = data.get('nacionalidade')
+    endereco = data.get('endereco')
+    numero = data.get('numero')
+    bairro = data.get('bairro')
+    cep = data.get('cep')
+    cidade = data.get('cidade')
+    nome_referencia = data.get('nome_referencia')
+    telefone_referencia = data.get('telefone_referencia')
+    descricao_referencia = data.get('descricao_referencia')
+    descricao_locais = data.get('descricao_locais')
+    descricao_experiencia = data.get('descricao_experiencia')
+    formacao_academica = data.get('formacao_academica')
+    formacao = data.get('formacao')
+    falesobrevoce = data.get('falesobrevoce')
+    onde_trabalhar = data.get('onde_trabalhar')
+    cargo = data.get('cargo')
+
+    conn = get_database_connection()
+    cursor = conn.cursor()
+
+    try:
+        query = """
+            INSERT INTO noval.curriculo (
+                onde_trabalhar, cargo, nome, data_nascimento, cpf,
+                telefone, email, estado_civil, genero, nacionalidade,
+                endereco, numero, bairro, cep, cidade, nome_referencia,
+                telefone_referencia, descricao_referencia, descricao_locais,
+                descricao_experiencia, formacao_academica, formacao,
+                falesobrevoce, created_at, chamar_entrevista
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """
+        cursor.execute(query, (
+            onde_trabalhar, cargo, nome, data_nascimento, cpf,
+            telefone, email, estado_civil, genero, nacionalidade,
+            endereco, numero, bairro, cep, cidade, nome_referencia,
+            telefone_referencia, descricao_referencia, descricao_locais,
+            descricao_experiencia, formacao_academica, formacao,
+            falesobrevoce, datetime.now(), False  # chamar_entrevista default para false
+        ))
+        conn.commit()
+        return jsonify({"message": "Currículo enviado com sucesso!"}), 201
+
+    except Exception as e:
+        conn.rollback()
+        return jsonify({"error": str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()
 
 
 # INSERINDO DADOS DE ENTREVISTA
