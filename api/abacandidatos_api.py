@@ -230,7 +230,7 @@ def status_entrevista(id):
         conn.close()
         
 
-#INSERINDO DADOS DE ENTREVISTA
+
 # INSERINDO DADOS DE ENTREVISTA
 @app.route('/insert_entrevista', methods=['POST'])
 def insert_entrevista():
@@ -241,7 +241,7 @@ def insert_entrevista():
     cursor = conn.cursor()
     
     try:
-        # Insert na tabela entrevistas
+    #  Insert na tabela entrevistas (dados pessoais)
         cursor.execute(""" 
             INSERT INTO noval.entrevistas (cargo, filial, nome_candidato, data_nascimento, cpf, telefone, email, id)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
@@ -254,37 +254,78 @@ def insert_entrevista():
             data['cpf'], 
             data['telefone'], 
             data['email'],
-            data['id_candidato']  # Adicionando o ID do candidato
+            data['id_candidato']
         ))
 
         # Captura o ID da nova entrevista
         entrevista_id = cursor.fetchone()[0]
 
-        # Inserir na tabela entrevista_montador
-        cursor.execute(""" 
-            INSERT INTO noval.entrevista_montador (entrevista_id, moradia, planos_futuros, coisas_importantes, hobbies,
-                atualizacao, residencia, redes_sociais, ponto_forte, realizacao, cursos, horas_extras,
-                veiculo, caracteristicas, experiencia, novalar, obs)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-        """, (
-            entrevista_id,  # Use o ID capturado aqui
-            data['moradia'], 
-            data['planos_futuros'], 
-            data['coisas_importantes'],
-            data['hobbies'], 
-            data['atualizacao'], 
-            data['residencia'], 
-            data['redes_sociais'],
-            data['ponto_forte'], 
-            data['realizacao'], 
-            data['cursos'], 
-            data['horas_extras'],
-            data['veiculo'], 
-            data['caracteristicas'], 
-            data['experiencia'], 
-            data['novalar'],
-            data['obs']
-        ))
+        # 2. Atualizar a coluna 'entrevista_efetuada' para TRUE
+        cursor.execute("""
+            UPDATE noval.entrevistas
+            SET entrevista_efetuada = TRUE
+            WHERE id = %s;
+        """, (entrevista_id,))
+
+        # Verificação para Montador
+        if data['cargo'] == 'Montador':  
+            cursor.execute(""" 
+                INSERT INTO noval.entrevista_montador (entrevista_id, moradia, planos_futuros, coisas_importantes, hobbies,
+                    atualizacao, residencia, redes_sociais, ponto_forte, realizacao, cursos, horas_extras,
+                    veiculo, caracteristicas, experiencia, novalar, obs)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                entrevista_id,  
+                data['moradia'], 
+                data['planos_futuros'], 
+                data['coisas_importantes'],
+                data['hobbies'], 
+                data['atualizacao'], 
+                data['residencia'], 
+                data['redes_sociais'],
+                data['ponto_forte'], 
+                data['realizacao'], 
+                data['cursos'], 
+                data['horas_extras'],
+                data['veiculo'], 
+                data['caracteristicas'], 
+                data['experiencia'], 
+                data['novalar'],
+                data['obs']
+            ))
+
+        # Verificação para Vendedor
+        elif data['cargo'] == 'Vendedor':  
+            cursor.execute(""" 
+                INSERT INTO noval.entrevista_vendedor (entrevista_id, casa, futuro, importancia, hobbies, atualizado, residencia,
+                    redes_sociais, ponto_forte, realizacao, desapontamento, experiencia, cursos, horas_extras, informatica,
+                    vendas, confianca_cliente, estrategias_vendas, convencimento, redes_sociais2, gerente_vendas, novalar, obs)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)
+            """, (
+                entrevista_id, 
+                data['casa'],
+                data['futuro'],
+                data['importancia'],
+                data['hobbies'],
+                data['atualizado'],
+                data['residencia'],
+                data['redes_sociais'],
+                data['ponto_forte'],
+                data['realizacao'],
+                data['desapontamento'],
+                data['experiencia'],
+                data['cursos'],
+                data['horas_extras'],
+                data['informatica'],
+                data['vendas'],
+                data['confianca_cliente'],
+                data['estrategias_vendas'],
+                data['convencimento'],
+                data['redes_sociais2'],
+                data['gerente_vendas'],
+                data['novalar'],
+                data['obs']
+            ))
 
         # Commit das alterações
         conn.commit()
@@ -300,8 +341,6 @@ def insert_entrevista():
         # Fecha o cursor e a conexão
         cursor.close()
         conn.close()
-
-
 
 
 
