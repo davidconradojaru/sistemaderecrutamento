@@ -62,7 +62,114 @@ function validarDados() {
         dadosEntrevista.gerente_vendas = document.getElementById("gerente_vendas").value;
         dadosEntrevista.novalar = document.getElementById("novalar").value;
         dadosEntrevista.obs = document.getElementById("obs").value;
+    } else if (cargo === 'Gerente de Loja') {
+        dadosEntrevista.casa = document.getElementById("casa_gerente").value;
+        dadosEntrevista.futuro = document.getElementById("planos_gerente").value;
+        dadosEntrevista.importancia = document.getElementById("importancia_ger").value;
+        dadosEntrevista.hobbies = document.getElementById("hobbies_ger").value;
+        dadosEntrevista.atualizado = document.getElementById("atualizacao_ger").value;
+        dadosEntrevista.residencia = document.getElementById("residencia_ger").value;
+        dadosEntrevista.redes_sociais = document.getElementById("redes_sociais_ger").value;
+        dadosEntrevista.ponto_forte = document.getElementById("ponto_forte_ger").value;
+        dadosEntrevista.realizacao = document.getElementById("realizacao_ger").value;
+        dadosEntrevista.desapontamento = document.getElementById("desapontamento_ger").value;
+        dadosEntrevista.cursos = document.getElementById("cursos_ger").value;
+        dadosEntrevista.horas_extras = document.getElementById("horas_extras_ger").value;
+        dadosEntrevista.informatica = document.getElementById("informatica_ger").value;
+        dadosEntrevista.tempo_trabalho = document.getElementById("tempo_trabalho_ger").value;
+        dadosEntrevista.motivo_trabalho = document.getElementById("motivo_trabalho_ger").value;
+        dadosEntrevista.relacionamento_cliente = document.getElementById("relacionamento_cliente_ger").value;
+        dadosEntrevista.gestao_equipe = document.getElementById("gestao_equipe_ger").value;
+        dadosEntrevista.convencer = document.getElementById("convencer_ger").value;
+        dadosEntrevista.redes_vendas = document.getElementById("redes_vendas_ger").value;
+        dadosEntrevista.caracteristicas_vendedor = document.getElementById("caracteristicas_vendedor_ger").value;
+        dadosEntrevista.mudanca = document.getElementById("mudanca_ger").value;
+        dadosEntrevista.novalar = document.getElementById("novalar_ger").value;
+        dadosEntrevista.obs = document.getElementById("obs_ger").value;
+    } else if (cargo === 'Crediarista') {
+        dadosEntrevista.casa = document.getElementById("casa_cred").value;
+        dadosEntrevista.futuro = document.getElementById("planos_cred").value;
+        dadosEntrevista.importancia = document.getElementById("importancia_cred").value;
+        dadosEntrevista.hobbies = document.getElementById("hobbies_cred").value;
+        dadosEntrevista.atualizado = document.getElementById("atualizacao_cred").value;
+        dadosEntrevista.residencia = document.getElementById("residencia_cred").value;
+        dadosEntrevista.redes_sociais = document.getElementById("redes_sociais_cred").value;
+        dadosEntrevista.ponto_forte = document.getElementById("ponto_forte_cred").value;
+        dadosEntrevista.realizacao = document.getElementById("realizacao_cred").value;
+        dadosEntrevista.desapontamento = document.getElementById("desapontamento_cred").value;
+        dadosEntrevista.cursos = document.getElementById("cursos_cred").value;
+        dadosEntrevista.horas_extras = document.getElementById("horas_extras_cred").value;
+        dadosEntrevista.informatica = document.getElementById("informatica_cred").value;
+        dadosEntrevista.tempo_trabalho = document.getElementById("tempo_trabalho_cred").value;
+        dadosEntrevista.motivo_trabalho = document.getElementById("motivo_trabalho_cred").value;
+        dadosEntrevista.relacionamento_equipe = document.getElementById("relacionamento_equipe_cred").value;
+        dadosEntrevista.estrategias = document.getElementById("estrategias_cred").value;
+        dadosEntrevista.profissional_administrativo = document.getElementById("profissional_administrativo_cred").value;
+        dadosEntrevista.convencer = document.getElementById("convencer_cred").value;
+        dadosEntrevista.novalar = document.getElementById("novalar_cred").value;
+        dadosEntrevista.obs = document.getElementById("obs_cred").value;
+    } else if (cargo === 'Auxiliar Administrativo') {
+        dadosEntrevista.moradia = document.getElementById("moradia_auxadm").value;
+        dadosEntrevista.futuro = document.getElementById("futuro_auxadm").value;
+        dadosEntrevista.importantes = document.getElementById("importantes_auxadm").value;
+        dadosEntrevista.hobbies = document.getElementById("hobbies_auxadm").value;
+        dadosEntrevista.atualizacao = document.getElementById("atualizacao_auxadm").value;
+        dadosEntrevista.residencia = document.getElementById("residencia_auxadm").value;
+        dadosEntrevista.redes_sociais = document.getElementById("redes_sociais_auxadm").value;
+        dadosEntrevista.ponto_forte = document.getElementById("ponto_forte_auxadm").value;
+        dadosEntrevista.cursos = document.getElementById("cursos_auxadm").value;
+        dadosEntrevista.horas_extras = document.getElementById("horas_extras_auxadm").value;
+        dadosEntrevista.software = document.getElementById("software_auxadm").value;
+        dadosEntrevista.office = document.getElementById("office_auxadm").value;
+        dadosEntrevista.relacionamento = document.getElementById("relacionamento_auxadm").value;
+        dadosEntrevista.habilidades = document.getElementById("habilidades_auxadm").value;
+        dadosEntrevista.discricao = document.getElementById("discricao_auxadm").value;
+        dadosEntrevista.novalar = document.getElementById("novalar_auxadm").value;
+        dadosEntrevista.obs = document.getElementById("obs_auxadm").value;
+    } else if (cargo === 'Gerente Administrativo') {
+        dadosEntrevista.moradia = document.getElementById("moradia_geradm").value;
+        dadosEntrevista.planos_futuro = document.getElementById("planos_futuro_geradm").value;
+        dadosEntrevista.coisas_importantes = document.getElementById("coisas_importantes_geradm").value;
+        dadosEntrevista.hobbies = document.getElementById("hobbies_geradm").value;
+        dadosEntrevista.atualizacao = document.getElementById("atualizacao_geradm").value;
+        dadosEntrevista.residencia = document.getElementById("residencia_geradm").value;
+        dadosEntrevista.redes_sociais = document.getElementById("redes_sociais_geradm").value;
+        dadosEntrevista.ponto_forte = document.getElementById("ponto_forte_geradm").value;
+        dadosEntrevista.maior_realizacao = document.getElementById("maior_realizacao_geradm").value;
+        dadosEntrevista.desapontamento = document.getElementById("desapontamento_geradm").value;
+        dadosEntrevista.cursos = document.getElementById("cursos_geradm").value;
+        dadosEntrevista.horas_extras = document.getElementById("horas_extras_geradm").value;
+        dadosEntrevista.informacao = document.getElementById("informacao_geradm").value;
+        dadosEntrevista.tempo = document.getElementById("tempo_geradm").value;
+        dadosEntrevista.motivo_gerente = document.getElementById("motivo_gerente_geradm").value;
+        dadosEntrevista.relacionamento = document.getElementById("relacionamento_geradm").value;
+        dadosEntrevista.estrategias = document.getElementById("estrategias_geradm").value;
+        dadosEntrevista.caracteristicas_administrativo = document.getElementById("caracteristicas_administrativo_geradm").value;
+        dadosEntrevista.convencao = document.getElementById("convencao_geradm").value;
+        dadosEntrevista.novalar = document.getElementById("novalar_geradm").value;
+        dadosEntrevista.obs = document.getElementById("obs_geradm").value;
+    } else if (cargo === 'Ajudante de Depósito') {
+        dadosEntrevista.residencia = document.getElementById("residencia_auxcd").value;
+        dadosEntrevista.planos_futuro = document.getElementById("planos_futuro_auxcd").value;
+        dadosEntrevista.coisas_importantes = document.getElementById("coisas_importantes_auxcd").value;
+        dadosEntrevista.horas_vagas = document.getElementById("horas_vagas_auxcd").value;
+        dadosEntrevista.atualizacao = document.getElementById("atualizacao_auxcd").value;
+        dadosEntrevista.residencias_ultimos_5_anos = document.getElementById("residencias_ultimos_5_anos_auxcd").value;
+        dadosEntrevista.redes_sociais = document.getElementById("redes_sociais_auxcd").value;
+        dadosEntrevista.ponto_forte = document.getElementById("ponto_forte_auxcd").value;
+        dadosEntrevista.maior_realizacao = document.getElementById("maior_realizacao_auxcd").value;
+        dadosEntrevista.cursos_profissionalizantes = document.getElementById("cursos_profissionalizantes_auxcd").value;
+        dadosEntrevista.horas_extras = document.getElementById("horas_extras_auxcd").value;
+        dadosEntrevista.caracteristicas_ajudante = document.getElementById("caracteristicas_ajudante_auxcd").value;
+        dadosEntrevista.experiencia_deposito = document.getElementById("experiencia_deposito_auxcd").value;
+        dadosEntrevista.conhece_novalar = document.getElementById("conhece_novalar_auxcd").value;
+        dadosEntrevista.obs = document.getElementById("obs_auxcd").value;
     }
+    
+    
+    
+    
+    
 
     // Montando um objeto único para enviar
     const dados = {
@@ -86,7 +193,7 @@ function validarDados() {
 
 // Função para enviar os dados para o servidor
 function enviarDados(dados) {
-    fetch('http://127.0.0.1:5000/insert_entrevista', {
+    fetch('/insert_entrevista', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

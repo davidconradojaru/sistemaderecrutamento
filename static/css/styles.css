@@ -9,11 +9,24 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: yellow;
+    position:relative;
+    background-color: rgb(36, 182, 240);
     color: #000000;
     padding: 20px;
     text-align: center;
     margin-bottom: 20px;
+}
+
+#curriculoButton {
+    background-color: #14d314;
+    position: absolute; 
+    bottom: 10px; /* Distância do fundo */
+    right: 10px;  /* Distância da borda direita */
+    padding: 5px 15px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 /* Estilo das abas */
@@ -34,6 +47,8 @@ nav {
         opacity: 1;
     }
 }
+
+
 
 .tab-list {
     list-style: none;
@@ -183,6 +198,104 @@ nav {
 }
 
 
+/* Ajustes para responsividade */
+@media (max-width: 768px) {
+    #curriculoButton {
+        padding: 8px 20px;  /* Aumenta o padding para dar mais espaço */
+        font-size: 14px;    /* Aumenta o tamanho da fonte para telas menores */
+        bottom: 20px;       /* Ajusta a distância do fundo */
+        right: 20px;        /* Ajusta a distância da borda direita */
+    }
+}
+
+/* Ajustes para telas menores que 480px */
+@media (max-width: 480px) {
+    header {
+        padding: 15px;   /* Ajusta o padding do header para telas menores */
+    }
+
+    #curriculoButton {
+        padding: 8px 15px;  /* Ajusta o tamanho do padding para telas muito pequenas */
+        font-size: 12px;     /* Ajusta o tamanho da fonte */
+        bottom: 10px;        /* Reduz a distância do fundo */
+        right: 10px;         /* Reduz a distância da borda direita */
+    }
+}
+
+/* Estilo das abas */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.tab-item {
+    padding: 15px 30px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-item:hover {
+    background-color: #e9ecef;
+}
+
+.tab-item.active {
+    border-bottom: 3px solid #034991;
+    color: #007bff;
+}
+
+/* Estilo do conteúdo das abas */
+.tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* botão de pesquisa na aba candidatos */
+/* Estilo do contêiner de pesquisa */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* centraliza nome lista de candidatos */
+.titulocand {   
+    text-align: center;
+}
+
+/* Campo de busca */
+#searchInput {
+    padding: 10px 15px;
+    border: 2px solid #034991;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 250px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #0056b3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
 /* Estilos gerais para dispositivos móveis */
 @media (max-width: 768px) {
     /* Ajustes no corpo */
@@ -192,17 +305,17 @@ nav {
 
     /* Ajustes no cabeçalho */
     header {
-        padding: 15px;
-        font-size: 18px; /* Ajustar tamanho do texto */
+        padding: 8px;
+        font-size: 10px; /* Ajustar tamanho do texto */
     }
 
     /* Estilo das abas */
     nav {
-        flex-direction: column; /* Alinha abas em coluna */
+        flex-direction: row; /* Alinha abas em coluna */
     }
 
     .tab-list {
-        flex-direction: column; /* Coloca as abas em coluna */
+        flex-direction: row; /* Coloca as abas em coluna */
     }
 
     .tab-item {
@@ -218,7 +331,7 @@ nav {
 
     /* Contêiner de pesquisa */
     .search-container {
-        flex-direction: column; /* Alinha itens em coluna */
+        flex-direction: row; /* Alinha itens em coluna */
         align-items: stretch; /* Estica itens para ocupar a largura */
     }
 
@@ -229,7 +342,7 @@ nav {
 
     /* Filtros */
     .filter-container {
-        flex-direction: column; /* Alinha filtros em coluna */
+        flex-direction: row; /* Alinha filtros em coluna */
     }
 
     .filter-container label,
@@ -247,7 +360,7 @@ nav {
 /* Ajustes para telas menores que 480px */
 @media (max-width: 480px) {
     header {
-        font-size: 16px; /* Reduzir ainda mais o tamanho da fonte */
+        font-size: 10px; /* Reduzir ainda mais o tamanho da fonte */
     }
 
     #searchInput {

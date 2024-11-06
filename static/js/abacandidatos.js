@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function fetchResults() {
         const query = searchInput.value.trim().toLowerCase();
 
-        fetch(`http://127.0.0.1:5000/pesquisacandidato?query=${encodeURIComponent(query)}`)
+        fetch(`http://192.168.121.246:5000/pesquisacandidato?query=${encodeURIComponent(query)}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Erro na resposta da API: ${response.status} - ${response.statusText}`);
@@ -63,7 +63,7 @@ document.getElementById('filterButton').addEventListener('click', function() {
 });
 
 function searchCandidates(city, position, chamarEntrevista) {
-    let url = `http://127.0.0.1:5000/pesquisacandidato?`;
+    let url = `http://192.168.121.246:5000/pesquisacandidato?`;
 
     if (city) {
         url += `city=${encodeURIComponent(city)}&`;
@@ -126,7 +126,7 @@ function displayResults(data) {
 
 
 function viewCurriculo(id) {
-    window.location.href = `http://127.0.0.1:5000/curriculo/${id}`;
+    window.location.href = `http://192.168.121.246:5000/curriculo/${id}`;
 }
 
 function salvarEstadoPagina() {

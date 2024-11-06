@@ -4,7 +4,7 @@ function voltarParaPaginaAnterior() {
 
 function entrevista_pendente(candidatoId) {
     // Verifica o status de chama_entrevista
-    fetch(`http://127.0.0.1:5000/curriculo/${candidatoId}/status_entrevista`)
+    fetch(`/curriculo/${candidatoId}/status_entrevista`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro ao consultar estado da entrevista: ' + response.status);
@@ -17,7 +17,7 @@ function entrevista_pendente(candidatoId) {
                 return Promise.reject(); // Força a saída da cadeia
             } else {
                 // Se não foi chamado, tenta encaminhar a entrevista
-                return fetch(`http://127.0.0.1:5000/curriculo/${candidatoId}/chama_entrevista`, {
+                return fetch(`/curriculo/${candidatoId}/chama_entrevista`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

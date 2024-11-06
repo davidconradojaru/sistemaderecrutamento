@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function buscarEntrevistas() {
-    fetch('http://127.0.0.1:5000/entrevistas')
+    fetch('/entrevistas')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro ao buscar entrevistas');
@@ -43,7 +43,7 @@ function exibirEntrevistas(data) {
             button.textContent = "Fazer Entrevista";
             button.onclick = () => {
                  // Redireciona para a API com os dados do candidato
-            const url = `http://127.0.0.1:5000/entrevista?id=${encodeURIComponent(item.id)}&nome=${encodeURIComponent(item.nome)}&cpf=${encodeURIComponent(item.cpf)}&data_nascimento=${encodeURIComponent(item.data_nascimento)}`;
+            const url = `/entrevista?id=${encodeURIComponent(item.id)}&nome=${encodeURIComponent(item.nome)}&cpf=${encodeURIComponent(item.cpf)}&data_nascimento=${encodeURIComponent(item.data_nascimento)}`;
             window.location.href = url;
             };
             resultadoItem.appendChild(button);

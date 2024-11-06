@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Recrutamento</title>
     <link rel="stylesheet" href="static/css/styles.css"> 
+    
 </head>
 <body>
     <header>
-        <h1>Sistema de Recrutamento Novalar</h1>
-    </header>
 
+        <h1>Recruit Novalar</h1>
+        <button id="curriculoButton" onclick="window.location.href='http://192.168.121.246:5000/entradacurriculo'">Preencher<br>Currículo</button>
+
+    </header>
+    
     <nav>
+
         <ul class="tab-list">
             
             <li class="tab-item active" data-tab="Candidatos">Candidatos</li>
@@ -85,8 +90,8 @@
     </section>
     
     <section id="Aprovações" class="tab-content">
-        <h2>Currículos Aguardando Aprovação</h2>
-        <p>Aqui serão exibidos os currículos aguardando aprovação.</p>
+        <h2>Candidatos Aguardando Aprovação</h2>
+        <div id="aprovresults"></div>
     </section>
 
     <section id="Etapas" class="tab-content">
@@ -96,6 +101,7 @@
     <script src="static/js/abacandidatos.js"></script> 
     <script src="static/js/home.js"></script> 
     <script src="static/js/fazerentrevista.js"></script>
+    <script src="static/js/aprovacao.js"></script>
     
 </body>
 </html>

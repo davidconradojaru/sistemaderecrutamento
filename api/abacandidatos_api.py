@@ -188,7 +188,7 @@ def listar_entrevistas():
     conn = get_database_connection()
     cursor = conn.cursor()
     
-    cursor.execute("SELECT * FROM noval.curriculo c JOIN noval.entrevistas e ON c.id = e.id WHERE c.chamar_entrevista = TRUE AND e.entrevista_efetuada = FALSE")
+    cursor.execute("SELECT * FROM noval.curriculo WHERE chamar_entrevista = TRUE AND entrevista_efetuada = FALSE")
     rows = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -201,6 +201,43 @@ def listar_entrevistas():
             "cargo": row[2],
             "nome": row[3],
             "created_at": row[24].strftime('%d/%m/%y %H:%M:%S') if row[24] else None
+        })
+
+    return jsonify(resultados)
+
+#EXIBIR PARA APROVACÕES
+@app.route('/aprovacoes', methods=['GET'])
+def listar_aprovacoes():    
+    conn = get_database_connection()
+    cursor = conn.cursor()
+
+    # Consulta com JOIN entre curriculo e entrevistas, filtra onde entrevista_efetuada é TRUE e chamar_entrevista é TRUE
+    query = """
+    SELECT e.id, e.cargo, e.filial, e.nome_candidato, e.data_nascimento, e.cpf, e.telefone, 
+    e.email, e.data_entrevista, c.entrevista_efetuada
+    FROM noval.entrevistas e
+    JOIN noval.curriculo c ON e.id = c.id
+    WHERE c.entrevista_efetuada = TRUE AND c.chamar_entrevista = TRUE;
+    """
+    
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    resultados = []
+    for row in rows:
+        resultados.append({
+            "id": row[0],
+            "cargo": row[1],
+            "filial": row[2],
+            "nome_candidato": row[3],
+            "data_nascimento": row[4].strftime('%d/%m/%y') if row[4] else None,
+            "cpf": row[5],
+            "telefone": row[6],
+            "email": row[7],
+            "data_entrevista": row[8].strftime('%d/%m/%y %H:%M:%S') if row[8] else None,
+            "entrevista_efetuada": row[9]
         })
 
     return jsonify(resultados)
@@ -322,7 +359,7 @@ def insert_entrevista():
 
         # 2. Atualizar a coluna 'entrevista_efetuada' para TRUE
         cursor.execute("""
-            UPDATE noval.entrevistas
+            UPDATE noval.curriculo
             SET entrevista_efetuada = TRUE
             WHERE id = %s;
         """, (entrevista_id,))
@@ -386,6 +423,165 @@ def insert_entrevista():
                 data['novalar'],
                 data['obs']
             ))
+        
+        elif data['cargo'] == 'Gerente de Loja':  
+            cursor.execute("""
+                INSERT INTO noval.entrevista_gerenteloja (
+                    entrevista_id, casa, futuro, importancia, hobbies, atualizado, residencia,
+                    redes_sociais, ponto_forte, realizacao, desapontamento, cursos, horas_extras, informatica,
+                    tempo_trabalho, motivo_trabalho, relacionamento_cliente, gestao_equipe, convencer, redes_vendas,
+                    caracteristicas_vendedor, mudanca, novalar, obs
+                ) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                entrevista_id, 
+                data['casa'],
+                data['futuro'],
+                data['importancia'],
+                data['hobbies'],
+                data['atualizado'],
+                data['residencia'],
+                data['redes_sociais'],
+                data['ponto_forte'],
+                data['realizacao'],
+                data['desapontamento'],
+                data['cursos'],
+                data['horas_extras'],
+                data['informatica'],
+                data['tempo_trabalho'],
+                data['motivo_trabalho'],
+                data['relacionamento_cliente'],
+                data['gestao_equipe'],
+                data['convencer'],
+                data['redes_vendas'],
+                data['caracteristicas_vendedor'],
+                data['mudanca'],
+                data['novalar'],
+                data['obs']
+            ))
+        elif data['cargo'] == 'Crediarista':  
+            cursor.execute("""
+                INSERT INTO noval.entrevista_crediarista (
+                    entrevista_id, casa, futuro, importancia, hobbies, atualizado, residencia,
+                    redes_sociais, ponto_forte, realizacao, desapontamento, cursos, horas_extras, informatica,
+                    tempo_trabalho, motivo_trabalho, relacionamento_equipe, estrategias, profissional_administrativo,
+                    convencer, novalar, obs
+                ) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                entrevista_id, 
+                data['casa'],
+                data['futuro'],
+                data['importancia'],
+                data['hobbies'],
+                data['atualizado'],
+                data['residencia'],
+                data['redes_sociais'],
+                data['ponto_forte'],
+                data['realizacao'],
+                data['desapontamento'],
+                data['cursos'],
+                data['horas_extras'],
+                data['informatica'],
+                data['tempo_trabalho'],
+                data['motivo_trabalho'],
+                data['relacionamento_equipe'],
+                data['estrategias'],
+                data['profissional_administrativo'],
+                data['convencer'],
+                data['novalar'],
+                data['obs']
+            ))
+            
+        elif data['cargo'] == 'Auxiliar Administrativo':  
+            cursor.execute("""
+                INSERT INTO noval.entrevista_auxiliar_administrativo (
+                    entrevista_id, moradia, futuro, importantes, hobbies, atualizacao, residencia,
+                    redes_sociais, ponto_forte, cursos, horas_extras, software, office, relacionamento,
+                    habilidades, discricao, novalar, obs
+                ) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                entrevista_id, 
+                data['moradia'],
+                data['futuro'],
+                data['importantes'],
+                data['hobbies'],
+                data['atualizacao'],
+                data['residencia'],
+                data['redes_sociais'],
+                data['ponto_forte'],
+                data['cursos'],
+                data['horas_extras'],
+                data['software'],
+                data['office'],
+                data['relacionamento'],
+                data['habilidades'],
+                data['discricao'],
+                data['novalar'],
+                data['obs']
+            ))
+        elif data['cargo'] == 'Gerente Administrativo':  
+            cursor.execute("""
+                INSERT INTO noval.entrevista_gerente_administrativo (
+                    entrevista_id, moradia, planos_futuro, coisas_importantes, hobbies, atualizado, residencia,
+                    redes_sociais, ponto_forte, maior_realizacao, desapontamento, cursos, horas_extras, informacao,
+                    tempo, motivo_gerente, relacionamento, estrategias, caracteristicas_administrativo, convencao,
+                    novalar, obs
+                ) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                entrevista_id, 
+                data['moradia'],
+                data['planos_futuro'],
+                data['coisas_importantes'],
+                data['hobbies'],
+                data['atualizado'],
+                data['residencia'],
+                data['redes_sociais'],
+                data['ponto_forte'],
+                data['maior_realizacao'],
+                data['desapontamento'],
+                data['cursos'],
+                data['horas_extras'],
+                data['informacao'],
+                data['tempo'],
+                data['motivo_gerente'],
+                data['relacionamento'],
+                data['estrategias'],
+                data['caracteristicas_administrativo'],
+                data['convencao'],
+                data['novalar'],
+                data['obs']
+            ))
+            
+        elif data['cargo'] == 'Ajudante de Depósito':  
+            cursor.execute("""
+                INSERT INTO noval.entrevista_ajudante_deposito (
+                    entrevista_id, residencia, planos_futuro, coisas_importantes, horas_vagas, atualizado, 
+                    residencias_ultimos_5_anos, redes_sociais, ponto_forte, maior_realizacao, cursos_profissionalizantes, 
+                    horas_extras, caracteristicas_ajudante, experiencia_deposito, conhece_novalar, obs
+                ) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                entrevista_id, 
+                data['residencia'],
+                data['planos_futuro'],
+                data['coisas_importantes'],
+                data['horas_vagas'],
+                data['atualizado'],
+                data['residencias_ultimos_5_anos'],
+                data['redes_sociais'],
+                data['ponto_forte'],
+                data['maior_realizacao'],
+                data['cursos_profissionalizantes'],
+                data['horas_extras'],
+                data['caracteristicas_ajudante'],
+                data['experiencia_deposito'],
+                data['conhece_novalar'],
+                data['obs']
+            ))
+
 
         # Commit das alterações
         conn.commit()
