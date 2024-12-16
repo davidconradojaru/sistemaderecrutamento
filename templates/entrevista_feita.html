@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrevista de Candidato</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/entrevista_feita.css') }}">
+    <style>
+        /* Estilos básicos para o botão e a página */
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .campo {
+            margin-bottom: 10px;
+        }
+
+        .campo strong {
+            font-weight: bold;
+        }
+
+        #cargoEspecifico {
+            margin-top: 20px;
+        }
+
+        #dadosGerais {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Entrevista de Candidato</h1>
+        
+        <!-- Dados Gerais do Candidato -->
+        <section id="dadosGerais">
+            <h2>Dados Gerais da Entrevista</h2>
+            <div class="campo" id="nomeCandidato">
+                <strong>Nome do Candidato:</strong> <span id="nome"></span>
+            </div>
+            <div class="campo" id="idEntrevista">
+                <strong>ID:</strong> <span id="id"></span>
+            </div>
+            <div class="campo" id="cargo">
+                <strong>Cargo:</strong> <span id="cargoSpan"></span>
+            </div>
+            <div class="campo" id="filial">
+                <strong>Filial:</strong> <span id="filialSpan"></span>
+            </div>
+            <div class="campo" id="dataNascimento">
+                <strong>Data de Nascimento:</strong> <span id="dataNascimentoSpan"></span>
+            </div>
+            <div class="campo" id="cpf">
+                <strong>CPF:</strong> <span id="cpfSpan"></span>
+            </div>
+            <div class="campo" id="telefone">
+                <strong>Telefone:</strong> <span id="telefoneSpan"></span>
+            </div>
+            <div class="campo" id="email">
+                <strong>Email:</strong> <span id="emailSpan"></span>
+            </div>
+            <div class="campo" id="dataEntrevista">
+                <strong>Data da Entrevista:</strong> <span id="dataEntrevistaSpan"></span>
+            </div>
+        </section>
+
+        <!-- Dados Específicos do Cargo -->
+        <section id="cargoEspecifico">
+            <!-- Os dados específicos do cargo serão inseridos aqui -->
+        </section>
+
+        <!-- Botão para Voltar -->
+        <button onclick="voltarParaPaginaAnterior()">Voltar</button>
+    </div>
+
+    <!-- Inclusão do arquivo JavaScript -->
+    <script src="{{ url_for('static', filename='js/entrevista_comp.js') }}"></script>
+</body>
+</html>

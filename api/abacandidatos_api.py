@@ -155,6 +155,7 @@ def entradacurriculo():
 def pagina_entrevista():
     return render_template('entrevista.html')
 
+
 @app.route('/home')
 def pagina_home():
     return send_from_directory('..', 'home.html')
@@ -211,7 +212,6 @@ def listar_aprovacoes():
     conn = get_database_connection()
     cursor = conn.cursor()
 
-    # Consulta com JOIN entre curriculo e entrevistas, filtra onde entrevista_efetuada é TRUE e chamar_entrevista é TRUE
     query = """
     SELECT e.id, e.cargo, e.filial, e.nome_candidato, e.data_nascimento, e.cpf, e.telefone, 
     e.email, e.data_entrevista, c.entrevista_efetuada
@@ -237,7 +237,7 @@ def listar_aprovacoes():
             "telefone": row[6],
             "email": row[7],
             "data_entrevista": row[8].strftime('%d/%m/%y %H:%M:%S') if row[8] else None,
-            "entrevista_efetuada": row[9]
+            "entrevista_efetuada": row[9]         
         })
 
     return jsonify(resultados)
@@ -599,6 +599,133 @@ def insert_entrevista():
         conn.close()
 
 
+@app.route('/entrevista_feita/<int:entrevista_id>', methods=['GET'])
+def entrevista_feita(entrevista_id):
+    return render_template('entrevista_feita.html', entrevista_id=entrevista_id)
+
+#CONSULTAR E PASSAR DADOS PARA PAGINA ENTREVISTA_FEITA.HTML
+@app.route('/get_entrevista_feita/<int:entrevista_id>', methods=['GET'])
+def get_entrevistapagina(entrevista_id):
+    conn = get_database_connection()
+    cursor = conn.cursor()
+
+    try:
+        # Primeiro, busque os dados gerais da entrevista
+        cursor.execute("SELECT * FROM noval.entrevistas WHERE id = %s;", (entrevista_id,))
+        entrevista = cursor.fetchone()
+
+        if entrevista is None:
+            return jsonify({'error': 'Entrevista não encontrada'}), 404
+
+    # Criando um dicionário com os dados gerais da entrevista de forma dinâmica
+        entrevista_data = {}
+        
+        # Preenche o dicionário com o nome das colunas como chave e os dados como valor
+        if entrevista:
+            for idx, column in enumerate(cursor.description):
+                entrevista_data[column[0]] = entrevista[idx]
+        # Dados específicos do cargo
+        cargo = entrevista_data.get('cargo')
+        dados_especificos = {}
+
+        # Buscando dados específicos com base no cargo
+        cargo = entrevista_data.get('cargo')
+
+        if cargo == 'Montador':
+            cursor.execute("""
+            SELECT entrevista_id, moradia, planos_futuros, coisas_importantes, hobbies, 
+                atualizacao, residencia, redes_sociais, ponto_forte, realizacao, 
+                cursos, horas_extras, veiculo, caracteristicas, experiencia, novalar, 
+                obs, created_at FROM noval.entrevista_montador WHERE entrevista_id = %s;
+            """, (entrevista_id,))
+            dados_especificos = cursor.fetchone()
+            if dados_especificos:
+                entrevista_data['montador_dados'] = dict(zip([column[0] for column in cursor.description], dados_especificos))
+
+        elif cargo == 'Vendedor':
+            cursor.execute("""
+                SELECT entrevista_id, casa, futuro, importancia, hobbies, atualizado, residencia, redes_sociais, 
+                    ponto_forte, realizacao, desapontamento, experiencia, cursos, horas_extras, informatica, vendas, 
+                    confianca_cliente, estrategias_vendas, convencimento, redes_sociais2, gerente_vendas, novalar, 
+                    obs, created_at
+                FROM noval.entrevista_vendedor 
+                WHERE entrevista_id = %s;""", (entrevista_id,))
+            dados_especificos = cursor.fetchone()
+            if dados_especificos:
+                entrevista_data['vendedor_dados'] = dict(zip([column[0] for column in cursor.description], dados_especificos))
+
+        elif cargo == 'Gerente de Loja':
+            cursor.execute("""
+                SELECT entrevista_id, casa, futuro, importancia, hobbies, atualizado, residencia, redes_sociais, 
+                    ponto_forte, realizacao, desapontamento, cursos, horas_extras, informatica, tempo_trabalho, 
+                    motivo_trabalho, relacionamento_cliente, gestao_equipe, convencer, redes_vendas, caracteristicas_vendedor, 
+                    mudanca, novalar, obs, created_at, updated_at
+                FROM noval.entrevista_gerenteloja 
+                WHERE entrevista_id = %s;
+            """, (entrevista_id,))
+            dados_especificos = cursor.fetchone()
+            if dados_especificos:
+                entrevista_data['gerente_dados'] = dict(zip([column[0] for column in cursor.description], dados_especificos))
+
+        elif cargo == 'Crediarista':
+            cursor.execute("""
+                SELECT entrevista_id, casa, futuro, importancia, hobbies, atualizado, residencia, redes_sociais, 
+                    ponto_forte, realizacao, desapontamento, cursos, horas_extras, informatica, tempo_trabalho, 
+                    motivo_trabalho, relacionamento_equipe, estrategias, profissional_administrativo, convencer, 
+                    novalar, obs, created_at
+                FROM noval.entrevista_crediarista 
+                WHERE entrevista_id = %s;
+            """, (entrevista_id,))
+            dados_especificos = cursor.fetchone()
+            if dados_especificos:
+                entrevista_data['crediarista_dados'] = dict(zip([column[0] for column in cursor.description], dados_especificos))
+
+        elif cargo == 'Auxiliar Administrativo':
+            cursor.execute("""
+                SELECT entrevista_id, moradia, futuro, importantes, hobbies, atualizado, residencia, redes_sociais, 
+                    ponto_forte, cursos, horas_extras, software, office, relacionamento, habilidades, descricao, 
+                    novalar, obs, created_at
+                FROM noval.entrevista_aux_administrativo 
+                WHERE entrevista_id = %s;
+            """, (entrevista_id,))
+            dados_especificos = cursor.fetchone()
+            if dados_especificos:
+                entrevista_data['aux_administrativo_dados'] = dict(zip([column[0] for column in cursor.description], dados_especificos))
+
+        elif cargo == 'Gerente Administrativo':
+            cursor.execute("""
+                SELECT entrevista_id, moradia, planos_futuro, coisas_importantes, hobbies, atualizado, residencia, 
+                    redes_sociais, ponto_forte, maior_realizacao, desapontamento, cursos, horas_extras, informacao, 
+                    tempo, motivo_gerente, relacionamento, estrategias, caracteristicas_administrativo, convencao, 
+                    novalar, obs, created_at
+                FROM noval.entrevista_gerente_administrativo 
+                WHERE entrevista_id = %s;
+            """, (entrevista_id,))
+            dados_especificos = cursor.fetchone()
+            if dados_especificos:
+                entrevista_data['gerente_administrativo_dados'] = dict(zip([column[0] for column in cursor.description], dados_especificos))
+
+        elif cargo == 'Ajudante de Depósito':
+            cursor.execute("""
+                SELECT entrevista_id, residencia, planos_futuro, coisas_importantes, horas_vagas, atualizado, 
+                    residencias_ultimos_5_anos, redes_sociais, ponto_forte, maior_realizacao, cursos_profissionalizantes, 
+                    horas_extras, caracteristicas_ajudante, experiencia_deposito, conhece_novalar, obs, created_at
+                FROM noval.entrevista_ajudante_deposito
+                WHERE entrevista_id = %s;
+            """, (entrevista_id,))
+            dados_especificos = cursor.fetchone()
+            if dados_especificos:
+                entrevista_data['ajudante_deposito_dados'] = dict(zip([column[0] for column in cursor.description], dados_especificos))
+
+        # Retorna os dados completos da entrevista (gerais e específicos)
+        return jsonify(entrevista_data)
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+    finally:
+        cursor.close()
+        conn.close()
 
 
 if __name__ == '__main__':

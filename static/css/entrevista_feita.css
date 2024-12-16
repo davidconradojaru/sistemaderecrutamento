@@ -1,0 +1,118 @@
+/* Resetando margens e padding para evitar inconsistências */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Contêiner principal */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho principal */
+h1 {
+    font-size: 2em;
+    text-align: center;
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+/* Estilo para os títulos das seções */
+h2 {
+    font-size: 1.5em;
+    color: #444;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+}
+
+/* Estilo para os campos de dados */
+.campo {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.campo strong {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* Estilo para o conteúdo das informações */
+.campo span {
+    margin-left: 10px;
+    color: #555;
+}
+
+/* Seção específica do cargo */
+#cargo_especifico {
+    margin-top: 30px;
+}
+
+#cargo_especifico h3 {
+    font-size: 1.4em;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+#cargo_especifico p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o botão de voltar */
+button {
+    display: block;
+    width: 200px;
+    margin: 30px auto 0;
+    padding: 10px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Efeito de hover no botão */
+button:hover {
+    background-color: #00408a;
+}
+
+/* Responsividade: Ajustar o layout para telas pequenas */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    .campo {
+        font-size: 0.95em;
+    }
+
+    button {
+        width: 100%;
+    }
+}

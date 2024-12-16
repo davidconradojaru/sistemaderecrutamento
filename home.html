@@ -91,7 +91,11 @@
     
     <section id="Aprovações" class="tab-content">
         <h2>Candidatos Aguardando Aprovação</h2>
-        <div id="aprovresults"></div>
+        <div id="aprovresults">
+            <a href="/entrevista_feita/{{ candidato.id }}" class="button_class">
+                <button>Ver Entrevista Completa</button>
+            </a>
+        </div>
     </section>
 
     <section id="Etapas" class="tab-content">
@@ -102,6 +106,7 @@
     <script src="static/js/home.js"></script> 
     <script src="static/js/fazerentrevista.js"></script>
     <script src="static/js/aprovacao.js"></script>
+    
     
 </body>
 </html>

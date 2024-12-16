@@ -18,6 +18,7 @@ function buscaraprovacoes() {
             document.getElementById('aprovresults').innerHTML = '<p>Erro ao carregar candidatos.</p>';
         });
 }
+
 function exibiraprovacao(data) {
     const resultadosContainer = document.getElementById('aprovresults');
     resultadosContainer.innerHTML = '';
@@ -33,15 +34,14 @@ function exibiraprovacao(data) {
                 <p><strong>Cargo Desejado:</strong> ${item.cargo}</p>
                 <p><strong>Data da entrevista:</strong> ${item.data_entrevista}</p>
             `;
-            // // Criação do botão para agendar entrevista
-            // const button = document.createElement("button");
-            // button.textContent = "Fazer Entrevista";
-            // button.onclick = () => {
-            //      // Redireciona para a API com os dados do candidato
-            // const url = `http://127.0.0.1:5000/entrevista?id=${encodeURIComponent(item.id)}&nome=${encodeURIComponent(item.nome)}&cpf=${encodeURIComponent(item.cpf)}&data_nascimento=${encodeURIComponent(item.data_nascimento)}`;
-            // window.location.href = url;
-            // };
-            // resultadoItem.appendChild(button);
+            // Criação do botão para ver a entrevista completa
+            const button = document.createElement("button");
+            button.textContent = "Ver Entrevista Completa";
+            button.onclick = () => {
+                // Redireciona para a página de entrevista_feita.html com o id do candidato
+                window.location.href = `/entrevista_feita/${encodeURIComponent(item.id)}`;
+            };
+            resultadoItem.appendChild(button);
             resultadosContainer.appendChild(resultadoItem);
         });
     } else {
