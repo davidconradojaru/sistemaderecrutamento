@@ -77,7 +77,7 @@ function displayResults(data) {
 
     if (data.cargo === 'Montador' && data.montador_dados) {
         cargoEspecificoDiv.innerHTML = `
-            <h3>Dados do Montador</h3>
+            <h3>Perguntas ao Montador</h3>
             <p><strong>Moradia:</strong> ${truncateText(data.montador_dados.moradia)}</p>
             <p><strong>Planos Futuros:</strong> ${truncateText(data.montador_dados.planos_futuros)}</p>
             <p><strong>Coisas Importantes:</strong> ${truncateText(data.montador_dados.coisas_importantes)}</p>
@@ -99,7 +99,7 @@ function displayResults(data) {
     }
     else if (data.cargo === 'Vendedor' && data.vendedor_dados) {
         cargoEspecificoDiv.innerHTML = `
-            <h3>Dados do Vendedor</h3>
+            <h3>Perguntas ao Vendedor</h3>
             <p><strong>Casa:</strong> ${truncateText(data.vendedor_dados.casa)}</p>
             <p><strong>Futuro:</strong> ${truncateText(data.vendedor_dados.futuro)}</p>
             <p><strong>Importância:</strong> ${truncateText(data.vendedor_dados.importancia)}</p>
@@ -128,7 +128,7 @@ function displayResults(data) {
     
     else if (data.cargo === 'Crediarista' && data.crediarista_dados) {
         cargoEspecificoDiv.innerHTML = `
-            <h3>Dados do Crediarista</h3>
+            <h3>Perguntas a Crediarista</h3>
             <p><strong>Casa:</strong> ${truncateText(data.crediarista_dados.casa)}</p>
             <p><strong>Futuro:</strong> ${truncateText(data.crediarista_dados.futuro)}</p>
             <p><strong>Importância:</strong> ${truncateText(data.crediarista_dados.importancia)}</p>
@@ -156,7 +156,7 @@ function displayResults(data) {
     
     else if (data.cargo === 'Auxiliar Administrativo' && data.aux_administrativo_dados) {
         cargoEspecificoDiv.innerHTML = `
-            <h3>Dados do Auxiliar Administrativo</h3>
+            <h3>Perguntas ao Auxiliar Administrativo</h3>
             <p><strong>Moradia:</strong> ${truncateText(data.aux_administrativo_dados.moradia)}</p>
             <p><strong>Futuro:</strong> ${truncateText(data.aux_administrativo_dados.futuro)}</p>
             <p><strong>Importantes:</strong> ${truncateText(data.aux_administrativo_dados.importantes)}</p>
@@ -179,7 +179,7 @@ function displayResults(data) {
     
     else if (data.cargo === 'Gerente Administrativo' && data.gerente_administrativo_dados) {
         cargoEspecificoDiv.innerHTML = `
-            <h3>Dados do Gerente Administrativo</h3>
+            <h3>Perguntas ao Gerente Administrativo</h3>
             <p><strong>Moradia:</strong> ${truncateText(data.gerente_administrativo_dados.moradia)}</p>
             <p><strong>Planos Futuros:</strong> ${truncateText(data.gerente_administrativo_dados.planos_futuro)}</p>
             <p><strong>Coisas Importantes:</strong> ${truncateText(data.gerente_administrativo_dados.coisas_importantes)}</p>
@@ -206,7 +206,7 @@ function displayResults(data) {
     
     else if (data.cargo === 'Ajudante de Depósito' && data.ajudante_deposito_dados) {
         cargoEspecificoDiv.innerHTML = `
-            <h3>Dados do Ajudante de Depósito</h3>
+            <h3>Perguntas ao Ajudante de Depósito</h3>
             <p><strong>Residência:</strong> ${truncateText(data.ajudante_deposito_dados.residencia)}</p>
             <p><strong>Planos Futuros:</strong> ${truncateText(data.ajudante_deposito_dados.planos_futuro)}</p>
             <p><strong>Coisas Importantes:</strong> ${truncateText(data.ajudante_deposito_dados.coisas_importantes)}</p>
