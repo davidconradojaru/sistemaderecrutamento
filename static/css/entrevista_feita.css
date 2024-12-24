@@ -116,3 +116,96 @@ button:hover {
         width: 100%;
     }
 }
+
+
+/* Cor do botão Voltar (azul) */
+#voltar {
+    background-color: #007BFF;
+}
+
+#voltar:hover {
+    background-color: #0056b3;
+}
+
+/* Cor do botão Aprovar (verde) */
+#aprovar {
+    background-color: #28a745;
+}
+
+#aprovar:hover {
+    background-color: #218838;
+}
+
+/* Cor do botão Recusar (vermelho) */
+#recusar {
+    background-color: #dc3545;
+}
+
+#recusar:hover {
+    background-color: #c82333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.campo {
+    margin-bottom: 10px;
+}
+
+.campo strong {
+    font-weight: bold;
+}
+
+#cargoEspecifico {
+    margin-top: 20px;
+}
+
+#dadosGerais {
+    margin-top: 20px;
+}
+
+/* Estilo para os botões alinhados */
+.button-container {
+    display: flex;
+    justify-content: space-between;  /* Distribui os botões para os lados */
+    margin-top: 20px;
+}
+
+.button-container button {
+    width: 30%;  /* Ajuste o tamanho para garantir que eles se ajustem ao layout */
+}
+
+#mensagem {
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.5s ease-in-out; /* Transição suave */
+}
+
+/* Estilo para a mensagem de sucesso (Aprovação) */
+.aprovado {
+    background-color: #28a745;
+    color: white;
+    border: 2px solid #218838;
+}
+
+/* Estilo para a mensagem de erro ou recusa */
+.recusado {
+    background-color: #dc3545;
+    color: white;
+    border: 2px solid #c82333;
+}
+
+/* Adiciona a animação de fade-in */
+.mostrar {
+    opacity: 1; /* Torna a mensagem visível */
+}

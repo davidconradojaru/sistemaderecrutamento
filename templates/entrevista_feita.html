@@ -5,44 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrevista de Candidato</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/entrevista_feita.css') }}">
-    <style>
-        /* Estilos básicos para o botão e a página */
-        button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-
-        .campo {
-            margin-bottom: 10px;
-        }
-
-        .campo strong {
-            font-weight: bold;
-        }
-
-        #cargoEspecifico {
-            margin-top: 20px;
-        }
-
-        #dadosGerais {
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -84,9 +46,12 @@
         <section id="cargoEspecifico">
             <!-- Os dados específicos do cargo serão inseridos aqui -->
         </section>
-
-        <!-- Botão para Voltar -->
+        <div id="mensagem"></div>
+        
         <button onclick="voltarParaPaginaAnterior()">Voltar</button>
+        <button id="aprovar" onclick="mudarAprovacao('aprovado')">Aprovar</button>
+        <button id="recusar" onclick="mudarAprovacao('recusado')">Recusar</button>
+        
     </div>
 
     <!-- Inclusão do arquivo JavaScript -->

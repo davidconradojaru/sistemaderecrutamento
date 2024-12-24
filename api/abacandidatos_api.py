@@ -467,31 +467,32 @@ def insert_entrevista():
                     tempo_trabalho, motivo_trabalho, relacionamento_equipe, estrategias, profissional_administrativo,
                     convencer, novalar, obs
                 ) 
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)
             """, (
                 entrevista_id, 
-                data['casa'],
-                data['futuro'],
-                data['importancia'],
-                data['hobbies'],
-                data['atualizado'],
-                data['residencia'],
-                data['redes_sociais'],
-                data['ponto_forte'],
-                data['realizacao'],
-                data['desapontamento'],
-                data['cursos'],
-                data['horas_extras'],
-                data['informatica'],
-                data['tempo_trabalho'],
-                data['motivo_trabalho'],
-                data['relacionamento_equipe'],
-                data['estrategias'],
-                data['profissional_administrativo'],
-                data['convencer'],
-                data['novalar'],
-                data['obs']
+                data['casa'],  # Correspondente ao campo 'casa_cred'
+                data['futuro'],  # Correspondente ao campo 'planos_cred'
+                data['importancia'],  # Correspondente ao campo 'importancia_cred'
+                data['hobbies'],  # Correspondente ao campo 'hobbies_cred'
+                data['atualizado'],  # Correspondente ao campo 'atualizacao_cred'
+                data['residencia'],  # Correspondente ao campo 'residencia_cred'
+                data['redes_sociais'],  # Correspondente ao campo 'redes_sociais_cred'
+                data['ponto_forte'],  # Correspondente ao campo 'ponto_forte_cred'
+                data['realizacao'],  # Correspondente ao campo 'realizacao_cred'
+                data['desapontamento'],  # Correspondente ao campo 'desapontamento_cred'
+                data['cursos'],  # Correspondente ao campo 'cursos_cred'
+                data['horas_extras'],  # Correspondente ao campo 'horas_extras_cred'
+                data['informatica'],  # Correspondente ao campo 'informatica_cred'
+                data['tempo_trabalho'],  # Correspondente ao campo 'tempo_trabalho_cred'
+                data['motivo_trabalho'],  # Correspondente ao campo 'motivo_trabalho_cred'
+                data['relacionamento_equipe'],  # Correspondente ao campo 'relacionamento_equipe_cred'
+                data['estrategias'],  # Correspondente ao campo 'estrategias_cred'
+                data['profissional_administrativo'],  # Correspondente ao campo 'profissional_administrativo_cred'
+                data['convencer'],  # Correspondente ao campo 'convencer_cred'
+                data['novalar'],  # Correspondente ao campo 'novalar_cred'
+                data['obs']  # Correspondente ao campo 'obs_cred'
             ))
+
             
         elif data['cargo'] == 'Auxiliar Administrativo':  
             cursor.execute("""
@@ -727,6 +728,31 @@ def get_entrevistapagina(entrevista_id):
         cursor.close()
         conn.close()
 
+@app.route('/entrevista_feita/<int:candidato_id>', methods=['POST'])
+def atualizar_aprovacao(candidato_id):
+    # Obter dados do corpo da requisição
+    data = request.get_json()
+    aprovacao = data.get('aprovacao')
+
+    # Verifica se o status está correto
+    if aprovacao not in ['aprovado', 'recusado']:
+        return jsonify({'error': 'Status inválido'}), 400
+
+    conn = get_database_connection()
+    cur = conn.cursor()
+
+    # Atualiza a coluna 'aprovacao' para 'aprovado' ou 'recusado' no candidato com ID específico
+    cur.execute("""
+        UPDATE noval.curriculo
+        SET aprovacao = %s
+        WHERE id = %s;
+    """, (aprovacao, candidato_id))
+    
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    return jsonify({'message': f'Candidato {aprovacao} com sucesso'}), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

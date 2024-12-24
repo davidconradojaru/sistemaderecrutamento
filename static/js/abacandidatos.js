@@ -189,4 +189,3 @@ searchButton.addEventListener("click", function() {
     fetchResults();
 });
 });
-
