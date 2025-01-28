@@ -470,10 +470,10 @@ def insert_entrevista():
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)
             """, (
                 entrevista_id, 
-                data['casa'],  # Correspondente ao campo 'casa_cred'
-                data['futuro'],  # Correspondente ao campo 'planos_cred'
-                data['importancia'],  # Correspondente ao campo 'importancia_cred'
-                data['hobbies'],  # Correspondente ao campo 'hobbies_cred'
+                data['casa'],
+                data['futuro'],
+                data['importancia'],
+                data['hobbies'],
                 data['atualizado'],  # Correspondente ao campo 'atualizacao_cred'
                 data['residencia'],  # Correspondente ao campo 'residencia_cred'
                 data['redes_sociais'],  # Correspondente ao campo 'redes_sociais_cred'
