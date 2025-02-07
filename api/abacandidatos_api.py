@@ -160,7 +160,6 @@ def pagina_entrevista():
 def pagina_home():
     return send_from_directory('..', 'home.html')
 
-
 #ROTA PARA BOTÃO CHAMAR ENTREVISTA
 @app.route('/curriculo/<int:id>/chama_entrevista', methods=['POST'])
 def alterar_entrevista(id):
@@ -241,9 +240,6 @@ def listar_aprovacoes():
         })
 
     return jsonify(resultados)
-
-
-
 
 #ENDPOINT PARA CONSULTAR ENTREVISTA ANTES DE CHAMAR BOTÃO DE CHAMA ENTREVISTA
 @app.route('/curriculo/<int:id>/status_entrevista', methods=['GET'])
